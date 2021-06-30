@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class testForFirstService {
     @Test
-    public void testMethod(String test){
+    public void testMethod(){
         FirstService object=new FirstService();
         String excpected="testik";
         String actual=object.sayMe("testik");
