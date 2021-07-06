@@ -3,7 +3,7 @@ package by.ita.je;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class testForFirstService {
+public class TestForFirstService {
     @Test
     public void testMethod(){
         FirstService object=new FirstService();
