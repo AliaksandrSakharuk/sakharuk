@@ -1,5 +1,6 @@
 package by.ita.je.controllers;
 
+import by.ita.je.dto.CarDto;
 import by.ita.je.dto.ClientDto;
 import by.ita.je.dto.DetailDto;
 import by.ita.je.model.Client;
@@ -7,47 +8,70 @@ import by.ita.je.model.Detail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 @RestController
 public class DetailController {
-    ObjectMapper objectMapper=new ObjectMapper();
+    private final static ObjectMapper objectMapper=new ObjectMapper();
 
     @ResponseBody
     @PostMapping("/detail")
-    public Detail create(@RequestBody DetailDto detailDto) {
+    public DetailDto create(@RequestBody DetailDto detailDto) {
         final Detail detail1 = objectMapper.convertValue(detailDto, Detail.class);
-        return detail1;
+        return detailDto;
     }
+
     @GetMapping("/detail/{id}")
-    public String findById(@PathVariable("id") String id)
-    {        return "found " + id ;
+    public DetailDto findById(@PathVariable("id") String id)
+    {   DetailDto detailDto=new DetailDto();
+        return detailDto;
     }
 
     @ResponseBody
     @PutMapping(value = "/detail")
-    public String update( @RequestParam(value = "id",required = false) String id,
-                          @RequestParam(value = "name", required = false) String name){
-        return "update " + id +" " + name;
+    public DetailDto update( @RequestParam(value = "name", required = false) String name){
+        DetailDto detailDto=new DetailDto();
+        detailDto.setName(name);
+        return detailDto;
     }
 
     @ResponseBody
     @DeleteMapping("/detail/{id}")
-    public String delleteById(@PathVariable("id") String id){ return "Delleted" +" " + id;}
+    public void delleteById(@PathVariable("id") String id){ }
 
     @ResponseBody
     @GetMapping("/details/list")
-    public String findByListIds(@RequestBody String list){
-        return "Found all list by" + list;
+    public List<DetailDto> findListByNames(@RequestBody List<String> listNames){
+
+        Iterator<String> iterator=listNames.iterator();
+        List<DetailDto> listDetailDto=new ArrayList<DetailDto>();
+        String name;
+        while(iterator.hasNext()){
+            name=iterator.next();
+            DetailDto detailDto=new DetailDto();
+            detailDto.setName(name);
+            listDetailDto.add(detailDto);
+        }
+
+        return listDetailDto;
     }
 
     @ResponseBody
     @GetMapping("/details")
-    public  String findAll(){
-        return "I'm found everything";
+    public List<DetailDto> findAll(){
+        List<DetailDto> listDetailDto=new ArrayList<DetailDto>();
+
+        return listDetailDto;
+
     }
 
     @ResponseBody
     @DeleteMapping("/details")
-    public String delleteList(@RequestBody String list){
-        return "Delleted list by " + list;
+    public void delleteList(@RequestBody List<DetailDto> listDetailDto){
+
     }
 }

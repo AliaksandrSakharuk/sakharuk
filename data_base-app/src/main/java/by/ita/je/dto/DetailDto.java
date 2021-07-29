@@ -3,6 +3,7 @@ package by.ita.je.dto;
 import by.ita.je.model.Detail;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
 
@@ -10,23 +11,40 @@ public class DetailDto {
 
     private String name;
     private long partNumber;
-    private int cost;
-    private short extraCharge; // наценка
+    private BigDecimal purchasePrice;
+    private int extraCharge;
+
+    public DetailDto() {    }
+
+    public DetailDto(String name, long partNumber, BigDecimal purchasePrice , int extraCharge) {
+        this.name = name;
+        this.partNumber = partNumber;
+        this.purchasePrice  = purchasePrice ;
+        this.extraCharge = extraCharge;
+    }
+
+    public void setName(String name) {        this.name = name;    }
+
+    public void setPartNumber(long partNumber) {        this.partNumber = partNumber;    }
+
+    public void setCost(double purchase_price ) {        this.purchasePrice  = purchasePrice ;    }
+
+    public void setExtraCharge(short extraCharge) {        this.extraCharge = extraCharge;    }
 
     public String getName() {        return name;    }
 
     public long getPartNumber() {        return partNumber;    }
 
-    public int getCost() {        return cost;    }
+    public BigDecimal getPurchasePrice() {        return purchasePrice ;    }
 
-    public short getExtraCharge() {        return extraCharge;    }
+    public int getExtraCharge() {        return extraCharge;    }
 
     @Override
     public String toString() {
         return "DetailDto{" +
                 "name='" + name + '\'' +
                 ", partNumber=" + partNumber +
-                ", cost=" + cost +
+                ", cost=" + purchasePrice  +
                 ", extraCharge=" + extraCharge +
                 '}';
     }

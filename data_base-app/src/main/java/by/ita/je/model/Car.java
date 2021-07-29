@@ -2,23 +2,21 @@ package by.ita.je.model;
 
 
 
-import javax.persistence.*;
+
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 
-@Entity
-@Table(name="cars")
+
 public class Car {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String nameOwner;
     private String nameCar;
     private int mileage;
     private int power;
     private boolean isElectro;
-    private boolean onHibrid;
+    private boolean isHibrid;
     private ZonedDateTime dataTime_In;
 
 
@@ -37,7 +35,7 @@ public class Car {
 
     public boolean isElectro() {        return isElectro;    }
 
-    public boolean isOnHibrid() {        return onHibrid;    }
+    public boolean isHibrid() {        return isHibrid;    }
 
     public ZonedDateTime getDataTime_In() {        return dataTime_In;    }
 
@@ -49,7 +47,7 @@ public class Car {
 
     public void setElectro(boolean electro) {        isElectro = electro;    }
 
-    public void setOnHibrid(boolean onHibrid) {        this.onHibrid = onHibrid;    }
+    public void setOnHibrid(boolean onHibrid) {        this.isHibrid = onHibrid;    }
 
     public void setDataTime_In(ZonedDateTime dataTime_In) {        this.dataTime_In = dataTime_In;    }
 
@@ -62,7 +60,7 @@ public class Car {
                 ", mileage=" + mileage +
                 ", power=" + power +
                 ", isElectro=" + isElectro +
-                ", onHibrid=" + onHibrid +
+                ", onHibrid=" + isHibrid +
                 ", dataTime_In=" + dataTime_In +
                 '}';
     }
@@ -72,12 +70,12 @@ public class Car {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
         Car car = (Car) o;
-        return getId() == car.getId() && getMileage() == car.getMileage() && getPower() == car.getPower() && isElectro() == car.isElectro() && isOnHibrid() == car.isOnHibrid() && getNameOwner().equals(car.getNameOwner()) && getNameCar().equals(car.getNameCar()) && getDataTime_In().equals(car.getDataTime_In());
+        return getId() == car.getId() && getMileage() == car.getMileage() && getPower() == car.getPower() && isElectro() == car.isElectro() && isHibrid() == car.isHibrid() && getNameOwner().equals(car.getNameOwner()) && getNameCar().equals(car.getNameCar()) && getDataTime_In().equals(car.getDataTime_In());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNameOwner(), getNameCar(), getMileage(), getPower(), isElectro(), isOnHibrid(), getDataTime_In());
+        return Objects.hash(getId(), getNameOwner(), getNameCar(), getMileage(), getPower(), isElectro(), isHibrid(), getDataTime_In());
     }
 
 
@@ -106,8 +104,8 @@ public class Car {
             car.isElectro=isElectro;
             return this;
         }
-        public Builder withIsHibrid(boolean onHibrid){
-            car.onHibrid=onHibrid;
+        public Builder withIsHibrid(boolean isHibrid){
+            car.isHibrid=isHibrid;
             return this;
         }
         public Builder withDataTime_In(){

@@ -1,20 +1,19 @@
 package by.ita.je.model;
 
 
-import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 
-@Entity
-@Table(name="workers")
+
 public class Worker {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String firstName;
     private String secondName;
-    private int salary;
+    private BigDecimal salary;
     private int bonus;
     private long phoneNumber;
     private boolean cheif;
@@ -26,7 +25,7 @@ public class Worker {
 
     public String getSecondName() {        return secondName;    }
 
-    public int getSalary() {        return salary;    }
+    public BigDecimal getSalary() {        return salary;    }
 
     public long getPhoneNumber() {        return phoneNumber;    }
 
@@ -38,7 +37,7 @@ public class Worker {
 
     public void setSecondName(String secondName) {        this.secondName = secondName;    }
 
-    public void setSalary(int salary) {        this.salary = salary;    }
+    public void setSalary(BigDecimal salary) {        this.salary = salary;    }
 
     public void setBonus(int bonus) {        this.bonus = bonus;    }
 
@@ -67,7 +66,7 @@ public class Worker {
         if (this == o) return true;
         if (!(o instanceof Worker)) return false;
         Worker worker = (Worker) o;
-        return id == worker.id && getSalary() == worker.getSalary() && getBonus() == worker.getBonus() && getPhoneNumber() == worker.getPhoneNumber() && cheif == worker.cheif && Objects.equals(getFirstName(), worker.getFirstName()) && Objects.equals(getSecondName(), worker.getSecondName()) && Objects.equals(getDataTime_start(), worker.getDataTime_start());
+        return id == worker.id && getBonus() == worker.getBonus() && getPhoneNumber() == worker.getPhoneNumber() && cheif == worker.cheif && Objects.equals(getFirstName(), worker.getFirstName()) && Objects.equals(getSecondName(), worker.getSecondName()) && Objects.equals(getSalary(), worker.getSalary()) && Objects.equals(getDataTime_start(), worker.getDataTime_start());
     }
 
     @Override
@@ -86,7 +85,7 @@ public class Worker {
             worker.secondName=secondName;
             return this;
         }
-        public Builder withSalary(int salary){
+        public Builder withSalary(BigDecimal salary){
             worker.salary=salary;
             return this;
         }

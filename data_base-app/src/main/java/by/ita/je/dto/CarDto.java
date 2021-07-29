@@ -4,19 +4,27 @@ package by.ita.je.dto;
 import java.util.Objects;
 
 public class CarDto {
-
-    private String nameOwner;
     private String nameCar;
-    private int mileage;
+    private String nameOwner;
+       private int mileage;
     private int power;
 
-    public CarDto(String nameOwner, String nameCar, int mileage, int power) {
-        this.nameOwner = nameOwner;
+    public CarDto() {    }
+
+    public CarDto(String nameCar, String nameOwner,  int mileage, int power) {
         this.nameCar = nameCar;
+        this.nameOwner = nameOwner;
         this.mileage = mileage;
         this.power = power;
     }
 
+    public void setNameOwner(String nameOwner) {        this.nameOwner = nameOwner;    }
+
+    public void setNameCar(String nameCar) {        this.nameCar = nameCar;    }
+
+    public void setMileage(int mileage) {        this.mileage = mileage;    }
+
+    public void setPower(int power) {        this.power = power;    }
 
     public String getNameOwner() {        return nameOwner;    }
 
