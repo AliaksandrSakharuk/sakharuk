@@ -7,47 +7,71 @@ import by.ita.je.model.Worker;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 @RestController
 public class WorkerController {
-    ObjectMapper objectMapper=new ObjectMapper();
+    private final static ObjectMapper objectMapper=new ObjectMapper();
 
     @ResponseBody
     @PostMapping("/worker")
-    public Worker create(@RequestBody WorkerDto workerDto) {
+    public WorkerDto create(@RequestBody WorkerDto workerDto) {
         final Worker worker1 = objectMapper.convertValue(workerDto, Worker.class);
-        return worker1;
+        return workerDto;
     }
-    @GetMapping("/worker/{id}")
-    public String findById(@PathVariable("id") String id)
-    {        return "found " + id ;
+    @GetMapping("/worker/{name}")
+    public WorkerDto findByName(@PathVariable("name") String name)
+    {   WorkerDto workerDto=new WorkerDto();
+    workerDto.setFirstName(name);
+        return workerDto;
     }
 
     @ResponseBody
     @PutMapping(value = "/worker")
-    public String update( @RequestParam(value = "id",required = false) String id,
-                          @RequestParam(value = "firstName", required = false) String firstName){
-        return "update " + id +" " + firstName;
+    public WorkerDto update( @RequestParam(value = "name",required = false) String name){
+        WorkerDto workerDto=new WorkerDto();
+        workerDto.setFirstName(name);
+        return workerDto;
     }
 
-    @ResponseBody
-    @DeleteMapping("/worker/{id}")
-    public String delleteById(@PathVariable("id") String id){ return "Delleted" +" " + id;}
+
 
     @ResponseBody
     @GetMapping("/workers/list")
-    public String findByListIds(@RequestBody String list){
-        return "Found all list by" + list;
+    public List<WorkerDto> findListByNames(@RequestBody List <String> listNames){
+
+        Iterator<String> iterator=listNames.iterator();
+        List<WorkerDto> listWorkerDto=new ArrayList<WorkerDto>();
+        String name;
+
+        while(iterator.hasNext()){
+            name=iterator.next();
+            WorkerDto workerDto=new WorkerDto();
+            workerDto.setFirstName(name);
+            listWorkerDto.add(workerDto);
+        }
+
+        return listWorkerDto;
+
     }
 
     @ResponseBody
     @GetMapping("/workers")
-    public  String findAll(){
-        return "I'm found everything";
+    public  List<WorkerDto> findAll(){
+        List<WorkerDto> listWorkerDto=new ArrayList<WorkerDto>();
+
+        return listWorkerDto;
+
     }
+    @ResponseBody
+    @DeleteMapping("/worker/{id}")
+    public void delleteById(@PathVariable("id") String id){ }
 
     @ResponseBody
     @DeleteMapping("/workers")
-    public String delleteList(@RequestBody String list){
-        return "Delleted list by " + list;
-    }
+    public void delleteList(@RequestBody List<WorkerDto> list){    }
 }

@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @RestController
@@ -17,42 +16,64 @@ public class CarControllers {
 
     @ResponseBody
     @PostMapping("/car")
-    public Car create(@RequestBody CarDto carDto) {
+    public CarDto create(@RequestBody CarDto carDto) {
         final Car car1 = objectMapper.convertValue(carDto, Car.class);
-       return car1;
+
+       return carDto;
             }
-    @GetMapping("/car/{id}")
-    public String findById(@PathVariable("id") String id)
-    {        return "found " + id ;
+
+    @GetMapping("/car/{name}")
+    public CarDto findByName(@PathVariable("name") String name)
+
+    {   CarDto carDto=new CarDto();
+    carDto.setNameCar(name);
+        return carDto;
     }
 
     @ResponseBody
     @PutMapping(value = "/car")
-    public String update( @RequestParam(value = "id",required = false) String id,
-                          @RequestParam(value = "name", required = false) String nameCar){
-        return "update " + id +" " + nameCar;
+    public CarDto update( @RequestParam(value = "name", required = false) String nameCar){
+        CarDto carDto=new CarDto();
+        carDto.setNameCar(nameCar);
+
+        return carDto;
     }
 
     @ResponseBody
     @DeleteMapping("/car/{id}")
-    public String delleteById(@PathVariable("id") String id){ return "Delleted" +" " + id;}
+    public void delleteById(@PathVariable("id") String id){
+
+    }
 
     @ResponseBody
     @GetMapping("/cars/list")
-    public String findByListIds(@RequestBody String list){
-        return "Found all list by" + list;
+    public List<CarDto> findListByNames(@RequestBody List<String> listName){
+        Iterator<String> iterator=listName.iterator();
+        List<CarDto> listCarDto=new ArrayList<CarDto>();
+        String name;
+        while(iterator.hasNext()){
+            name=iterator.next();
+            CarDto carDto=new CarDto();
+            carDto.setNameCar(name);
+            listCarDto.add(carDto);
+            }
+
+        return listCarDto;
     }
 
     @ResponseBody
     @GetMapping("/cars")
-    public  String findAll(){
-        return "I'm found everything";
+    public  List<CarDto> findAll(){
+        List<CarDto> listCarDto=new ArrayList<CarDto>();
+
+        return listCarDto;
     }
 
     @ResponseBody
     @DeleteMapping("/cars")
-    public String delleteList(@RequestBody String id){
-        return "Delleted list by " + id;
+    public void delleteList(@RequestBody List<CarDto> listCarDto){
+
+
     }
 
 

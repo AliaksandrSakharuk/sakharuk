@@ -1,24 +1,23 @@
 package by.ita.je.model;
 
 
-import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 
-@Entity
-@Table(name="clients")
+
 public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     private String firstName;
     private String lastName;
     private long phoneNumber;
     private int volumeBonus;
-    private int bill;
+    private BigDecimal bill;
     private boolean unwantedClient;
-    private ZonedDateTime dataTime;
+    private ZonedDateTime dataTime_request;
 
     public long getId() {        return id;    }
 
@@ -30,11 +29,11 @@ public class Client {
 
     public int getVolumeBonus() {        return volumeBonus;    }
 
-    public int getBill() {        return bill;    }
+    public BigDecimal getBill() {        return bill;    }
 
     public boolean isUnwantedClient() {        return unwantedClient;    }
 
-    public ZonedDateTime getDataTime() {        return dataTime;    }
+    public ZonedDateTime getDataTime_request() {        return dataTime_request;    }
 
     public void setFirstName(String firstName) {        this.firstName = firstName;    }
 
@@ -44,11 +43,11 @@ public class Client {
 
     public void setVolumeBonus(int volumeBonus) {        this.volumeBonus = volumeBonus;    }
 
-    public void setBill(int bill) {        this.bill = bill;    }
+    public void setBill(BigDecimal bill) {        this.bill = bill;    }
 
     public void setUnwantedClient(boolean unwantedClient) {        this.unwantedClient = unwantedClient;    }
 
-    public void setDataTime(ZonedDateTime dataTime) {        this.dataTime = dataTime;    }
+    public void setDataTime_request(ZonedDateTime dataTime_request) {        this.dataTime_request = dataTime_request;    }
 
     @Override
     public String toString() {
@@ -60,7 +59,7 @@ public class Client {
                 ", volumeBonus=" + volumeBonus +
                 ", bill=" + bill +
                 ", unwantedClient=" + unwantedClient +
-                ", dataTime=" + dataTime +
+                ", dataTime=" + dataTime_request +
                 '}';
     }
 
@@ -69,12 +68,12 @@ public class Client {
         if (this == o) return true;
         if (!(o instanceof Client)) return false;
         Client client = (Client) o;
-        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && getBill() == client.getBill() && isUnwantedClient() == client.isUnwantedClient() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getDataTime(), client.getDataTime());
+        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isUnwantedClient() == client.isUnwantedClient() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTime_request(), client.getDataTime_request());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isUnwantedClient(), getDataTime());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isUnwantedClient(), getDataTime_request());
     }
 
     public static class Builder{
@@ -98,7 +97,7 @@ public class Client {
             client.volumeBonus=volumeBonus;
             return this;
         }
-        public Builder withBill(int bill){
+        public Builder withBill(BigDecimal bill){
             client.bill=bill;
             return this;
         }
@@ -107,7 +106,7 @@ public class Client {
             return this;
         }
         public Builder withDataTime(ZonedDateTime dataTime){
-            client.dataTime=dataTime;
+            client.dataTime_request=dataTime;
             return this;
         }
         public Client build(){
