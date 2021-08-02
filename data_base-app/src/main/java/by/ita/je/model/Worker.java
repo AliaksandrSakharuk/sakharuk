@@ -13,8 +13,8 @@ import java.util.Objects;
 
 @Entity
 public class Worker {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String secondName;

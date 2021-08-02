@@ -1,10 +1,10 @@
 package by.ita.je.dto;
 
 import by.ita.je.model.Detail;
-import lombok.*;
+
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+
 
 
 public class DetailDto {
