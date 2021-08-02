@@ -44,7 +44,7 @@ public class ClientControllers {
 
     @ResponseBody
     @GetMapping("/clients/list")
-    public List<ClientDto> findListByIds(@RequestBody List<String> listIds){
+    public List<ClientDto> findListByIds(@RequestBody List<Long> listIds){
         List<ClientDto> listClientDto=new ArrayList<ClientDto>();
 
         return listClientDto;
@@ -60,7 +60,7 @@ public class ClientControllers {
 
     @ResponseBody
     @DeleteMapping("/clients")
-    public void delleteList(@RequestBody List<ClientDto> listClientDto){
+    public void delleteList(@RequestBody List<Long> listIds){
 
     }
 
