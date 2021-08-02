@@ -2,7 +2,6 @@ package by.ita.je.dto;
 
 
 
-
 public class CarDto {
     private String nameCar;
     private String nameOwner;

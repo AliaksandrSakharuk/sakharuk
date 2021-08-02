@@ -1,6 +1,6 @@
 package by.ita.je.dto;
 
-import by.ita.je.model.Detail;
+
 
 
 import java.math.BigDecimal;
