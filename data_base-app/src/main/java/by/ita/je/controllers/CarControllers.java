@@ -46,7 +46,7 @@ public class CarControllers {
 
     @ResponseBody
     @GetMapping("/cars/list")
-    public List<CarDto> findListByIds(@RequestBody List<String> listIDs){
+    public List<CarDto> findListByIds(@RequestBody List<Long> listIDs){
         List<CarDto> listCarDto=new ArrayList<CarDto>();
         return listCarDto;
     }
@@ -61,7 +61,7 @@ public class CarControllers {
 
     @ResponseBody
     @DeleteMapping("/cars")
-    public void delleteList(@RequestBody List<CarDto> listCarDto){
+    public void delleteList(@RequestBody List<Long> listIds){
 
 
     }

@@ -44,7 +44,7 @@ public class DetailController {
 
     @ResponseBody
     @GetMapping("/details/list")
-    public List<DetailDto> findListByIds(@RequestBody List<String> listIds){
+    public List<DetailDto> findListByIds(@RequestBody List<Long> listIds){
         List<DetailDto> listDetailDto=new ArrayList<DetailDto>();
 
         return listDetailDto;
@@ -61,7 +61,7 @@ public class DetailController {
 
     @ResponseBody
     @DeleteMapping("/details")
-    public void delleteList(@RequestBody List<DetailDto> listDetailDto){
+    public void delleteList(@RequestBody List<Long> listIds){
 
     }
 }
