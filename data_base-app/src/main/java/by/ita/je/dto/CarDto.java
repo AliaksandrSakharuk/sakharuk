@@ -1,7 +1,7 @@
 package by.ita.je.dto;
 
 
-import java.util.Objects;
+
 
 public class CarDto {
     private String nameCar;

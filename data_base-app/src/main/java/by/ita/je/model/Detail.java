@@ -13,8 +13,8 @@ import java.util.Objects;
 
 @Entity
 public class Detail {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String notes;
