@@ -33,7 +33,7 @@ public class DetailController {
 
     @ResponseBody
     @PutMapping(value = "/detail")
-    public DetailDto update( @RequestParam(value = "name", required = false) String name,
+    public DetailDto update( @RequestParam(value = "id", required = false) String id,
                              @RequestBody DetailDto detailDto){
         return detailDto;
     }

@@ -32,7 +32,7 @@ public class WorkerController {
 
     @ResponseBody
     @PutMapping(value = "/worker")
-    public WorkerDto update( @RequestParam(value = "name",required = false) String name,
+    public WorkerDto update( @RequestParam(value = "id",required = false) String id,
                              @RequestBody WorkerDto workerDto){
 
         return workerDto;

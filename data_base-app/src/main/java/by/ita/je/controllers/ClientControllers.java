@@ -32,7 +32,7 @@ public class ClientControllers {
 
     @ResponseBody
     @PutMapping(value = "/client")
-    public ClientDto update(@RequestParam(value = "firstName", required = false) String firstName,
+    public ClientDto update(@RequestParam(value = "id", required = false) String id,
                             @RequestBody ClientDto clientDto){
 
         return clientDto;
