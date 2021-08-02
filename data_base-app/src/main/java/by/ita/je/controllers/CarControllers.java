@@ -22,19 +22,18 @@ public class CarControllers {
        return carDto;
             }
 
-    @GetMapping("/car/{name}")
-    public CarDto findByName(@PathVariable("name") String name)
-
+    @GetMapping("/car/{id}")
+    public CarDto findById(@PathVariable("id") String id)
     {   CarDto carDto=new CarDto();
-    carDto.setNameCar(name);
+
         return carDto;
     }
 
     @ResponseBody
     @PutMapping(value = "/car")
-    public CarDto update( @RequestParam(value = "name", required = false) String nameCar){
-        CarDto carDto=new CarDto();
-        carDto.setNameCar(nameCar);
+    public CarDto update( @RequestParam(value = "id", required = false) String id,
+                          @RequestBody CarDto carDto){
+
 
         return carDto;
     }
@@ -47,17 +46,8 @@ public class CarControllers {
 
     @ResponseBody
     @GetMapping("/cars/list")
-    public List<CarDto> findListByNames(@RequestBody List<String> listName){
-        Iterator<String> iterator=listName.iterator();
+    public List<CarDto> findListByIds(@RequestBody List<String> listIDs){
         List<CarDto> listCarDto=new ArrayList<CarDto>();
-        String name;
-        while(iterator.hasNext()){
-            name=iterator.next();
-            CarDto carDto=new CarDto();
-            carDto.setNameCar(name);
-            listCarDto.add(carDto);
-            }
-
         return listCarDto;
     }
 

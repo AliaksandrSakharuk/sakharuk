@@ -33,9 +33,8 @@ public class DetailController {
 
     @ResponseBody
     @PutMapping(value = "/detail")
-    public DetailDto update( @RequestParam(value = "name", required = false) String name){
-        DetailDto detailDto=new DetailDto();
-        detailDto.setName(name);
+    public DetailDto update( @RequestParam(value = "name", required = false) String name,
+                             @RequestBody DetailDto detailDto){
         return detailDto;
     }
 
@@ -45,17 +44,8 @@ public class DetailController {
 
     @ResponseBody
     @GetMapping("/details/list")
-    public List<DetailDto> findListByNames(@RequestBody List<String> listNames){
-
-        Iterator<String> iterator=listNames.iterator();
+    public List<DetailDto> findListByIds(@RequestBody List<String> listIds){
         List<DetailDto> listDetailDto=new ArrayList<DetailDto>();
-        String name;
-        while(iterator.hasNext()){
-            name=iterator.next();
-            DetailDto detailDto=new DetailDto();
-            detailDto.setName(name);
-            listDetailDto.add(detailDto);
-        }
 
         return listDetailDto;
     }

@@ -24,19 +24,17 @@ public class ClientControllers {
         final Client client1 = objectMapper.convertValue(clientDto, Client.class);
         return clientDto;
     }
-    @GetMapping("/client/{name}")
-    public ClientDto findByName(@PathVariable("name") String name)
+    @GetMapping("/client/{id}")
+    public ClientDto findById(@PathVariable("id") String id)
     {  ClientDto clientDto=new ClientDto();
-    clientDto.setFirstName(name);
         return clientDto ;
     }
 
     @ResponseBody
     @PutMapping(value = "/client")
-    public ClientDto update(@RequestParam(value = "firstName", required = false) String firstName){
+    public ClientDto update(@RequestParam(value = "firstName", required = false) String firstName,
+                            @RequestBody ClientDto clientDto){
 
-        ClientDto clientDto=new ClientDto();
-        clientDto.setFirstName(firstName);
         return clientDto;
     }
 
@@ -46,16 +44,8 @@ public class ClientControllers {
 
     @ResponseBody
     @GetMapping("/clients/list")
-    public List<ClientDto> findListByNames(@RequestBody List<String> listNames){
-        Iterator<String> iterator=listNames.iterator();
+    public List<ClientDto> findListByIds(@RequestBody List<String> listIds){
         List<ClientDto> listClientDto=new ArrayList<ClientDto>();
-        String name;
-        while(iterator.hasNext()){
-            name=iterator.next();
-            ClientDto clientDto=new ClientDto();
-            clientDto.setFirstName(name);
-            listClientDto.add(clientDto);
-        }
 
         return listClientDto;
     }

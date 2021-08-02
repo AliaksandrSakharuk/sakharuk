@@ -23,18 +23,18 @@ public class WorkerController {
         final Worker worker1 = objectMapper.convertValue(workerDto, Worker.class);
         return workerDto;
     }
-    @GetMapping("/worker/{name}")
-    public WorkerDto findByName(@PathVariable("name") String name)
+    @GetMapping("/worker/{id}")
+    public WorkerDto findById(@PathVariable("id") String id)
     {   WorkerDto workerDto=new WorkerDto();
-    workerDto.setFirstName(name);
+
         return workerDto;
     }
 
     @ResponseBody
     @PutMapping(value = "/worker")
-    public WorkerDto update( @RequestParam(value = "name",required = false) String name){
-        WorkerDto workerDto=new WorkerDto();
-        workerDto.setFirstName(name);
+    public WorkerDto update( @RequestParam(value = "name",required = false) String name,
+                             @RequestBody WorkerDto workerDto){
+
         return workerDto;
     }
 
@@ -42,18 +42,9 @@ public class WorkerController {
 
     @ResponseBody
     @GetMapping("/workers/list")
-    public List<WorkerDto> findListByNames(@RequestBody List <String> listNames){
-
-        Iterator<String> iterator=listNames.iterator();
+    public List<WorkerDto> findListByIds(@RequestBody List <Long> listIds){
         List<WorkerDto> listWorkerDto=new ArrayList<WorkerDto>();
-        String name;
 
-        while(iterator.hasNext()){
-            name=iterator.next();
-            WorkerDto workerDto=new WorkerDto();
-            workerDto.setFirstName(name);
-            listWorkerDto.add(workerDto);
-        }
 
         return listWorkerDto;
 
