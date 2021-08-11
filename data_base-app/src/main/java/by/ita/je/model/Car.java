@@ -1,15 +1,11 @@
 package by.ita.je.model;
 
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.ZonedDateTime;
 import java.util.Objects;
-
 
 @Entity
 public class Car {
@@ -22,39 +18,84 @@ public class Car {
     private int power;
     private boolean isElectro;
     private boolean isHibrid;
-    private ZonedDateTime dataTime_In;
+    private ZonedDateTime dataTimeStartFix;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public void setNameOwner(String nameOwner) {        this.nameOwner = nameOwner;    }
+    public String getNameOwner() {
+        return nameOwner;
+    }
 
-    public long getId() {        return id;    }
+    public void setNameOwner(String nameOwner) {
+        this.nameOwner = nameOwner;
+    }
 
-    public String getNameOwner() {        return nameOwner;    }
+    public String getNameCar() {
+        return nameCar;
+    }
 
-    public String getNameCar() {        return nameCar;    }
+    public void setNameCar(String nameCar) {
+        this.nameCar = nameCar;
+    }
 
-    public int getMileage() {        return mileage;    }
+    public int getMileage() {
+        return mileage;
+    }
 
-    public int getPower() {        return power;    }
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
 
-    public boolean isElectro() {        return isElectro;    }
+    public int getPower() {
+        return power;
+    }
 
-    public boolean isHibrid() {        return isHibrid;    }
+    public void setPower(int power) {
+        this.power = power;
+    }
 
-    public ZonedDateTime getDataTime_In() {        return dataTime_In;    }
+    public boolean isElectro() {
+        return isElectro;
+    }
 
-    public void setNameCar(String nameCar) {        this.nameCar = nameCar;    }
+    public void setElectro(boolean electro) {
+        isElectro = electro;
+    }
 
-    public void setMileage(int mileage) {        this.mileage = mileage;    }
+    public boolean isHibrid() {
+        return isHibrid;
+    }
 
-    public void setPower(int power) {        this.power = power;    }
+    public void setHibrid(boolean hibrid) {
+        isHibrid = hibrid;
+    }
 
-    public void setElectro(boolean electro) {        isElectro = electro;    }
+    public ZonedDateTime getDataTimeStartFix() {
+        return dataTimeStartFix;
+    }
 
-    public void setOnHibrid(boolean onHibrid) {        this.isHibrid = onHibrid;    }
+    public void setDataTimeStartFix(ZonedDateTime dataTimeStartFix) {
+        this.dataTimeStartFix = dataTimeStartFix;
+    }
 
-    public void setDataTime_In(ZonedDateTime dataTime_In) {        this.dataTime_In = dataTime_In;    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return getId() == car.getId() && getMileage() == car.getMileage() && getPower() == car.getPower() && isElectro() == car.isElectro() && isHibrid() == car.isHibrid() && Objects.equals(getNameOwner(), car.getNameOwner()) && Objects.equals(getNameCar(), car.getNameCar()) && Objects.equals(getDataTimeStartFix(), car.getDataTimeStartFix());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNameOwner(), getNameCar(), getMileage(), getPower(), isElectro(), isHibrid(), getDataTimeStartFix());
+    }
 
     @Override
     public String toString() {
@@ -65,34 +106,18 @@ public class Car {
                 ", mileage=" + mileage +
                 ", power=" + power +
                 ", isElectro=" + isElectro +
-                ", onHibrid=" + isHibrid +
-                ", dataTime_In=" + dataTime_In +
+                ", isHibrid=" + isHibrid +
+                ", dataTimeStartFix=" + dataTimeStartFix +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-        Car car = (Car) o;
-        return getId() == car.getId() && getMileage() == car.getMileage() && getPower() == car.getPower() && isElectro() == car.isElectro() && isHibrid() == car.isHibrid() && getNameOwner().equals(car.getNameOwner()) && getNameCar().equals(car.getNameCar()) && getDataTime_In().equals(car.getDataTime_In());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getNameOwner(), getNameCar(), getMileage(), getPower(), isElectro(), isHibrid(), getDataTime_In());
-    }
-
-
 
     public static class Builder{
         private Car car;
 
-
-    public Builder withNameOwner(String name){
+        public Builder withNameOwner(String name){
             car.nameOwner=name;
             return this;
-    }
+        }
         public Builder withNameCar(String name){
             car.nameCar=name;
             return this;
@@ -113,14 +138,12 @@ public class Car {
             car.isHibrid=isHibrid;
             return this;
         }
-        public Builder withDataTime_In(){
-            car.dataTime_In=ZonedDateTime.now();
+        public Builder withDataTimeStartFix(){
+            car.dataTimeStartFix=ZonedDateTime.now();
             return this;
         }
-        public Car build() {return car;}
-
+        public Car build() {
+            return car;
+        }
     }
-
-
-
 }

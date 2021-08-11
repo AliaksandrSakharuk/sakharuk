@@ -1,8 +1,5 @@
 package by.ita.je.model;
 
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,34 +21,69 @@ public class Detail {
     private int extraCharge;
     private ZonedDateTime dataTimeDelivery;
 
-    public String getName() {        return name;    }
+    public long getId() {
+        return id;
+    }
 
-    public String getNotes() {        return notes;    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public long getPartNumber() {        return partNumber;    }
+    public String getName() {
+        return name;
+    }
 
-    public BigDecimal getSellingPrice() {        return sellingPrice;    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public BigDecimal getPurchasePrice() {        return purchasePrice;    }
+    public String getNotes() {
+        return notes;
+    }
 
-    public int getExtraCharge() {        return extraCharge;    }
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
-    public ZonedDateTime getDataTimeDelivery() {        return dataTimeDelivery;    }
+    public long getPartNumber() {
+        return partNumber;
+    }
 
-    public void setName(String name) {        this.name = name;    }
+    public void setPartNumber(long partNumber) {
+        this.partNumber = partNumber;
+    }
 
-    public void setNotes(String notes) {        this.notes = notes;    }
+    public BigDecimal getSellingPrice() {
+        return sellingPrice;
+    }
 
-    public void setPartNumber(long partNumber) {        this.partNumber = partNumber;    }
+    public void setSellingPrice(BigDecimal sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
 
-    public void setSellingPrice(BigDecimal sellingPrice) {        this.sellingPrice = sellingPrice;    }
+    public BigDecimal getPurchasePrice() {
+        return purchasePrice;
+    }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {        this.purchasePrice = purchasePrice;    }
+    public void setPurchasePrice(BigDecimal purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
 
-    public void setExtraCharge(int extraCharge) {        this.extraCharge = extraCharge;    }
+    public int getExtraCharge() {
+        return extraCharge;
+    }
 
-    public void setDataTimeDelivery(ZonedDateTime dataTimeDelivery) {        this.dataTimeDelivery = dataTimeDelivery;    }
+    public void setExtraCharge(int extraCharge) {
+        this.extraCharge = extraCharge;
+    }
 
+    public ZonedDateTime getDataTimeDelivery() {
+        return dataTimeDelivery;
+    }
+
+    public void setDataTimeDelivery(ZonedDateTime dataTimeDelivery) {
+        this.dataTimeDelivery = dataTimeDelivery;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -97,8 +129,8 @@ public class Detail {
             detail.dataTimeDelivery=dataTimeDelivery;
             return this;
         }
-        public Detail build(){ return detail;}
-
-
+        public Detail build(){
+            return detail;
+        }
     }
 }

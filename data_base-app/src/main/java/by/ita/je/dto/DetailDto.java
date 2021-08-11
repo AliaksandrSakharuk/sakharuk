@@ -1,14 +1,8 @@
 package by.ita.je.dto;
 
-
-
-
 import java.math.BigDecimal;
 
-
-
 public class DetailDto {
-
     private String name;
     private long partNumber;
     private BigDecimal purchasePrice;
@@ -23,21 +17,37 @@ public class DetailDto {
         this.extraCharge = extraCharge;
     }
 
-    public void setName(String name) {        this.name = name;    }
+    public String getName() {
+        return name;
+    }
 
-    public void setPartNumber(long partNumber) {        this.partNumber = partNumber;    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setCost(double purchase_price ) {        this.purchasePrice  = purchasePrice ;    }
+    public long getPartNumber() {
+        return partNumber;
+    }
 
-    public void setExtraCharge(short extraCharge) {        this.extraCharge = extraCharge;    }
+    public void setPartNumber(long partNumber) {
+        this.partNumber = partNumber;
+    }
 
-    public String getName() {        return name;    }
+    public BigDecimal getPurchasePrice() {
+        return purchasePrice;
+    }
 
-    public long getPartNumber() {        return partNumber;    }
+    public void setPurchasePrice(BigDecimal purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
 
-    public BigDecimal getPurchasePrice() {        return purchasePrice ;    }
+    public int getExtraCharge() {
+        return extraCharge;
+    }
 
-    public int getExtraCharge() {        return extraCharge;    }
+    public void setExtraCharge(int extraCharge) {
+        this.extraCharge = extraCharge;
+    }
 
     @Override
     public String toString() {

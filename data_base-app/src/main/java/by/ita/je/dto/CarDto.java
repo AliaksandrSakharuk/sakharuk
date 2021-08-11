@@ -1,11 +1,9 @@
 package by.ita.je.dto;
 
-
-
 public class CarDto {
     private String nameCar;
     private String nameOwner;
-       private int mileage;
+    private int mileage;
     private int power;
 
     public CarDto() {    }
@@ -17,21 +15,37 @@ public class CarDto {
         this.power = power;
     }
 
-    public void setNameOwner(String nameOwner) {        this.nameOwner = nameOwner;    }
+    public String getNameCar() {
+        return nameCar;
+    }
 
-    public void setNameCar(String nameCar) {        this.nameCar = nameCar;    }
+    public void setNameCar(String nameCar) {
+        this.nameCar = nameCar;
+    }
 
-    public void setMileage(int mileage) {        this.mileage = mileage;    }
+    public String getNameOwner() {
+        return nameOwner;
+    }
 
-    public void setPower(int power) {        this.power = power;    }
+    public void setNameOwner(String nameOwner) {
+        this.nameOwner = nameOwner;
+    }
 
-    public String getNameOwner() {        return nameOwner;    }
+    public int getMileage() {
+        return mileage;
+    }
 
-    public String getNameCar() {        return nameCar;    }
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
 
-    public int getMileage() {        return mileage;    }
+    public int getPower() {
+        return power;
+    }
 
-    public int getPower() {        return power;    }
+    public void setPower(int power) {
+        this.power = power;
+    }
 
     @Override
     public String toString() {
@@ -42,8 +56,4 @@ public class CarDto {
                 ", power=" + power +
                 '}';
     }
-
-
-
-
 }
