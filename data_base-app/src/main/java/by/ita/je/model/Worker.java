@@ -1,7 +1,5 @@
 package by.ita.je.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +7,6 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
-
 
 @Entity
 public class Worker {
@@ -21,36 +18,85 @@ public class Worker {
     private BigDecimal salary;
     private int bonus;
     private long phoneNumber;
-    private boolean cheif;
-    private ZonedDateTime dataTime_start;
+    private boolean isCheif;
+    private ZonedDateTime dataTimeStartWork;
 
-    public int getBonus() {        return bonus;    }
+    public long getId() {
+        return id;
+    }
 
-    public String getFirstName() {        return firstName;    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getSecondName() {        return secondName;    }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public BigDecimal getSalary() {        return salary;    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public long getPhoneNumber() {        return phoneNumber;    }
+    public String getSecondName() {
+        return secondName;
+    }
 
-    public boolean isMaster() {        return cheif;    }
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 
-    public ZonedDateTime getDataTime_start() {        return dataTime_start;    }
+    public BigDecimal getSalary() {
+        return salary;
+    }
 
-    public void setFirstName(String firstName) {        this.firstName = firstName;    }
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
 
-    public void setSecondName(String secondName) {        this.secondName = secondName;    }
+    public int getBonus() {
+        return bonus;
+    }
 
-    public void setSalary(BigDecimal salary) {        this.salary = salary;    }
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
 
-    public void setBonus(int bonus) {        this.bonus = bonus;    }
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public void setPhoneNumber(long phoneNumber) {        this.phoneNumber = phoneNumber;    }
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-    public void setCheif(boolean cheif) {        this.cheif = cheif;    }
+    public boolean isCheif() {
+        return isCheif;
+    }
 
-    public void setDataTime_start(ZonedDateTime dataTime_start) {        this.dataTime_start = dataTime_start;    }
+    public void setCheif(boolean cheif) {
+        isCheif = cheif;
+    }
+
+    public ZonedDateTime getDataTimeStartWork() {
+        return dataTimeStartWork;
+    }
+
+    public void setDataTimeStartWork(ZonedDateTime dataTimeStartWork) {
+        this.dataTimeStartWork = dataTimeStartWork;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Worker)) return false;
+        Worker worker = (Worker) o;
+        return getId() == worker.getId() && getBonus() == worker.getBonus() && getPhoneNumber() == worker.getPhoneNumber() && isCheif() == worker.isCheif() && Objects.equals(getFirstName(), worker.getFirstName()) && Objects.equals(getSecondName(), worker.getSecondName()) && Objects.equals(getSalary(), worker.getSalary()) && Objects.equals(getDataTimeStartWork(), worker.getDataTimeStartWork());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getSecondName(), getSalary(), getBonus(), getPhoneNumber(), isCheif(), getDataTimeStartWork());
+    }
 
     @Override
     public String toString() {
@@ -61,22 +107,9 @@ public class Worker {
                 ", salary=" + salary +
                 ", bonus=" + bonus +
                 ", phoneNumber=" + phoneNumber +
-                ", cheif=" + cheif +
-                ", dataTime_start=" + dataTime_start +
+                ", isCheif=" + isCheif +
+                ", dataTimeStartWork=" + dataTimeStartWork +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Worker)) return false;
-        Worker worker = (Worker) o;
-        return id == worker.id && getBonus() == worker.getBonus() && getPhoneNumber() == worker.getPhoneNumber() && cheif == worker.cheif && Objects.equals(getFirstName(), worker.getFirstName()) && Objects.equals(getSecondName(), worker.getSecondName()) && Objects.equals(getSalary(), worker.getSalary()) && Objects.equals(getDataTime_start(), worker.getDataTime_start());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, getFirstName(), getSecondName(), getSalary(), getBonus(), getPhoneNumber(), cheif, getDataTime_start());
     }
 
     public static class Builder{
@@ -102,8 +135,8 @@ public class Worker {
             worker.phoneNumber=phoneNumber;
             return this;
         }
-        public Builder withMaster(boolean cheif){
-            worker.cheif=cheif;
+        public Builder withCheif(boolean isCheif){
+            worker.isCheif=isCheif;
             return this;
         }
         public Worker build(){

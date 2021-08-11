@@ -1,7 +1,5 @@
 package by.ita.je.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +7,6 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
-
 
 @Entity
 public class Client {
@@ -22,37 +19,84 @@ public class Client {
     private int volumeBonus;
     private BigDecimal bill;
     private boolean unwantedClient;
-    private ZonedDateTime dataTime_request;
+    private ZonedDateTime dataTimeRequest;
 
-    public long getId() {        return id;    }
+    public long getId() {
+        return id;
+    }
 
-    public String getFirstName() {        return firstName;    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getLastName() {        return lastName;    }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public long getPhoneNumber() {        return phoneNumber;    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public int getVolumeBonus() {        return volumeBonus;    }
+    public String getLastName() {
+        return lastName;
+    }
 
-    public BigDecimal getBill() {        return bill;    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public boolean isUnwantedClient() {        return unwantedClient;    }
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public ZonedDateTime getDataTime_request() {        return dataTime_request;    }
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-    public void setFirstName(String firstName) {        this.firstName = firstName;    }
+    public int getVolumeBonus() {
+        return volumeBonus;
+    }
 
-    public void setLastName(String lastName) {        this.lastName = lastName;    }
+    public void setVolumeBonus(int volumeBonus) {
+        this.volumeBonus = volumeBonus;
+    }
 
-    public void setPhoneNumber(long phoneNumber) {        this.phoneNumber = phoneNumber;    }
+    public BigDecimal getBill() {
+        return bill;
+    }
 
-    public void setVolumeBonus(int volumeBonus) {        this.volumeBonus = volumeBonus;    }
+    public void setBill(BigDecimal bill) {
+        this.bill = bill;
+    }
 
-    public void setBill(BigDecimal bill) {        this.bill = bill;    }
+    public boolean isUnwantedClient() {
+        return unwantedClient;
+    }
 
-    public void setUnwantedClient(boolean unwantedClient) {        this.unwantedClient = unwantedClient;    }
+    public void setUnwantedClient(boolean unwantedClient) {
+        this.unwantedClient = unwantedClient;
+    }
 
-    public void setDataTime_request(ZonedDateTime dataTime_request) {        this.dataTime_request = dataTime_request;    }
+    public ZonedDateTime getDataTimeRequest() {
+        return dataTimeRequest;
+    }
+
+    public void setDataTimeRequest(ZonedDateTime dataTimeRequest) {
+        this.dataTimeRequest = dataTimeRequest;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isUnwantedClient() == client.isUnwantedClient() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTimeRequest(), client.getDataTimeRequest());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isUnwantedClient(), getDataTimeRequest());
+    }
 
     @Override
     public String toString() {
@@ -64,21 +108,8 @@ public class Client {
                 ", volumeBonus=" + volumeBonus +
                 ", bill=" + bill +
                 ", unwantedClient=" + unwantedClient +
-                ", dataTime=" + dataTime_request +
+                ", dataTimeRequest=" + dataTimeRequest +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Client)) return false;
-        Client client = (Client) o;
-        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isUnwantedClient() == client.isUnwantedClient() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTime_request(), client.getDataTime_request());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isUnwantedClient(), getDataTime_request());
     }
 
     public static class Builder{
@@ -111,14 +142,11 @@ public class Client {
             return this;
         }
         public Builder withDataTime(ZonedDateTime dataTime){
-            client.dataTime_request=dataTime;
+            client.dataTimeRequest=dataTime;
             return this;
         }
         public Client build(){
             return client;
         }
     }
-
-
-
 }

@@ -1,10 +1,8 @@
 package by.ita.je.dto;
 
-
 import java.math.BigDecimal;
 
 public class ClientDto {
-
     private String firstName;
     private long phoneNumber;
     private int volumeBonus;
@@ -19,21 +17,29 @@ public class ClientDto {
         this.bill=bill;
     }
 
-    public void setFirstName(String firstName) {        this.firstName = firstName;    }
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public void setPhoneNumber(long phoneNumber) {        this.phoneNumber = phoneNumber;    }
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-    public void setVolumeBonus(int volumeBonus) {        this.volumeBonus = volumeBonus;    }
+    public int getVolumeBonus() {
+        return volumeBonus;
+    }
 
-    public void setBill(BigDecimal bill) {        this.bill = bill;    }
+    public void setVolumeBonus(int volumeBonus) {
+        this.volumeBonus = volumeBonus;
+    }
 
-    public String getFirstName() {        return firstName;    }
+    public BigDecimal getBill() {
+        return bill;
+    }
 
-    public long getPhoneNumber() {        return phoneNumber;    }
-
-    public int getVolumeBonus() {        return volumeBonus;    }
-
-    public BigDecimal getBill() {        return bill;    }
+    public void setBill(BigDecimal bill) {
+        this.bill = bill;
+    }
 
     @Override
     public String toString() {

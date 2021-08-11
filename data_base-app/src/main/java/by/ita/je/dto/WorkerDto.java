@@ -1,10 +1,6 @@
 package by.ita.je.dto;
 
-
-
-
 import java.math.BigDecimal;
-
 
 public class WorkerDto {
     private String firstName;
@@ -21,21 +17,37 @@ public class WorkerDto {
         this.bonus = bonus;
     }
 
-    public void setFirstName(String firstName) {        this.firstName = firstName;    }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public void setSecondName(String secondName) {        this.secondName = secondName;    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public void setSalary(BigDecimal salary) {        this.salary = salary;    }
+    public String getSecondName() {
+        return secondName;
+    }
 
-    public void setBonus(int bonus) {        this.bonus = bonus;    }
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 
-    public String getFirstName() {        return firstName;    }
+    public BigDecimal getSalary() {
+        return salary;
+    }
 
-    public BigDecimal getSalary() {        return salary;    }
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
 
-    public int getBonus() {        return bonus;    }
+    public int getBonus() {
+        return bonus;
+    }
 
-    public String getSecondName() {        return secondName;    }
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
 
     @Override
     public String toString() {
