@@ -1,7 +1,5 @@
 package by.ita.je.dto;
 
-import java.math.BigDecimal;
-
 public class WorkerDto {
     private String firstName;
     private String secondName;

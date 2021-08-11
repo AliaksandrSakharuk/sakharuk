@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Car {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id;
+    private long id;
     private String nameOwner;
     private String nameCar;
     private int mileage;
