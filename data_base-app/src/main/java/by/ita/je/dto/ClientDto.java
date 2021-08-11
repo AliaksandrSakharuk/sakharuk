@@ -17,6 +17,14 @@ public class ClientDto {
         this.bill=bill;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public long getPhoneNumber() {
         return phoneNumber;
     }

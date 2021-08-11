@@ -18,7 +18,7 @@ public class Client {
     private long phoneNumber;
     private int volumeBonus;
     private BigDecimal bill;
-    private boolean unwantedClient;
+    private boolean isCash;
     private ZonedDateTime dataTimeRequest;
 
     public long getId() {
@@ -69,12 +69,12 @@ public class Client {
         this.bill = bill;
     }
 
-    public boolean isUnwantedClient() {
-        return unwantedClient;
+    public boolean isCash() {
+        return isCash;
     }
 
-    public void setUnwantedClient(boolean unwantedClient) {
-        this.unwantedClient = unwantedClient;
+    public void setCash(boolean cash) {
+        isCash = cash;
     }
 
     public ZonedDateTime getDataTimeRequest() {
@@ -90,12 +90,12 @@ public class Client {
         if (this == o) return true;
         if (!(o instanceof Client)) return false;
         Client client = (Client) o;
-        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isUnwantedClient() == client.isUnwantedClient() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTimeRequest(), client.getDataTimeRequest());
+        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isCash() == client.isCash() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTimeRequest(), client.getDataTimeRequest());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isUnwantedClient(), getDataTimeRequest());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isCash(), getDataTimeRequest());
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Client {
                 ", phoneNumber=" + phoneNumber +
                 ", volumeBonus=" + volumeBonus +
                 ", bill=" + bill +
-                ", unwantedClient=" + unwantedClient +
+                ", isCash=" + isCash +
                 ", dataTimeRequest=" + dataTimeRequest +
                 '}';
     }
@@ -137,8 +137,8 @@ public class Client {
             client.bill=bill;
             return this;
         }
-        public Builder withUnwantedClient(boolean unwantedClient){
-            client.unwantedClient=unwantedClient;
+        public Builder withCash(boolean isCash){
+            client.isCash=isCash;
             return this;
         }
         public Builder withDataTime(ZonedDateTime dataTime){

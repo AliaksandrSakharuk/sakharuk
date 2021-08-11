@@ -1,16 +1,14 @@
 package by.ita.je.dto;
 
-import java.math.BigDecimal;
-
 public class DetailDto {
     private String name;
     private long partNumber;
-    private BigDecimal purchasePrice;
+    private double purchasePrice;
     private int extraCharge;
 
     public DetailDto() {    }
 
-    public DetailDto(String name, long partNumber, BigDecimal purchasePrice , int extraCharge) {
+    public DetailDto(String name, long partNumber, double purchasePrice , int extraCharge) {
         this.name = name;
         this.partNumber = partNumber;
         this.purchasePrice  = purchasePrice ;
@@ -33,11 +31,11 @@ public class DetailDto {
         this.partNumber = partNumber;
     }
 
-    public BigDecimal getPurchasePrice() {
+    public double getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {
+    public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
@@ -54,7 +52,7 @@ public class DetailDto {
         return "DetailDto{" +
                 "name='" + name + '\'' +
                 ", partNumber=" + partNumber +
-                ", cost=" + purchasePrice  +
+                ", purchasePrice=" + purchasePrice +
                 ", extraCharge=" + extraCharge +
                 '}';
     }
