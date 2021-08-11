@@ -47,7 +47,6 @@ public class WorkerController {
 
     }
 
-    @ResponseBody
     @DeleteMapping("/workers")
     public void delleteList(@RequestBody List<Long> listIds){
 
