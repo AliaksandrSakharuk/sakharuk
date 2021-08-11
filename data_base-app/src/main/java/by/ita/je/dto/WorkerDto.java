@@ -5,15 +5,15 @@ import java.math.BigDecimal;
 public class WorkerDto {
     private String firstName;
     private String secondName;
-    private BigDecimal salary;
+    private long phoneNumber;
     private int bonus;
 
     public WorkerDto() {    }
 
-    public WorkerDto(String firstName, String secondName, BigDecimal salary, int bonus) {
+    public WorkerDto(String firstName, String secondName, long phoneNumber, int bonus) {
         this.firstName = firstName;
         this.secondName = secondName;
-        this.salary = salary;
+        this.phoneNumber = phoneNumber;
         this.bonus = bonus;
     }
 
@@ -33,12 +33,12 @@ public class WorkerDto {
         this.secondName = secondName;
     }
 
-    public BigDecimal getSalary() {
-        return salary;
+    public long getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setSalary(BigDecimal salary) {
-        this.salary = salary;
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public int getBonus() {
@@ -53,9 +53,9 @@ public class WorkerDto {
     public String toString() {
         return "WorkerDto{" +
                 "firstName='" + firstName + '\'' +
-                ", salary=" + salary +
+                ", secondName='" + secondName + '\'' +
+                ", phoneNumber=" + phoneNumber +
                 ", bonus=" + bonus +
-                ", secondName=" + secondName +
                 '}';
     }
 }

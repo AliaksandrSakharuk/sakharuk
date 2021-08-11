@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -16,8 +15,8 @@ public class Detail {
     private String name;
     private String notes;
     private long partNumber;
-    private BigDecimal sellingPrice;
-    private BigDecimal purchasePrice ;
+    private double sellingPrice;
+    private double purchasePrice ;
     private int extraCharge;
     private ZonedDateTime dataTimeDelivery;
 
@@ -53,19 +52,19 @@ public class Detail {
         this.partNumber = partNumber;
     }
 
-    public BigDecimal getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(BigDecimal sellingPrice) {
+    public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
-    public BigDecimal getPurchasePrice() {
+    public double getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {
+    public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
@@ -90,12 +89,26 @@ public class Detail {
         if (this == o) return true;
         if (!(o instanceof Detail)) return false;
         Detail detail = (Detail) o;
-        return id == detail.id && getPartNumber() == detail.getPartNumber() && getExtraCharge() == detail.getExtraCharge() && Objects.equals(getName(), detail.getName()) && Objects.equals(getNotes(), detail.getNotes()) && Objects.equals(getSellingPrice(), detail.getSellingPrice()) && Objects.equals(getPurchasePrice(), detail.getPurchasePrice()) && Objects.equals(getDataTimeDelivery(), detail.getDataTimeDelivery());
+        return getId() == detail.getId() && getPartNumber() == detail.getPartNumber() && Double.compare(detail.getSellingPrice(), getSellingPrice()) == 0 && Double.compare(detail.getPurchasePrice(), getPurchasePrice()) == 0 && getExtraCharge() == detail.getExtraCharge() && Objects.equals(getName(), detail.getName()) && Objects.equals(getNotes(), detail.getNotes()) && Objects.equals(getDataTimeDelivery(), detail.getDataTimeDelivery());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getName(), getNotes(), getPartNumber(), getSellingPrice(), getPurchasePrice(), getExtraCharge(), getDataTimeDelivery());
+        return Objects.hash(getId(), getName(), getNotes(), getPartNumber(), getSellingPrice(), getPurchasePrice(), getExtraCharge(), getDataTimeDelivery());
+    }
+
+    @Override
+    public String toString() {
+        return "Detail{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", notes='" + notes + '\'' +
+                ", partNumber=" + partNumber +
+                ", sellingPrice=" + sellingPrice +
+                ", purchasePrice=" + purchasePrice +
+                ", extraCharge=" + extraCharge +
+                ", dataTimeDelivery=" + dataTimeDelivery +
+                '}';
     }
 
     public static class Builder{
@@ -113,11 +126,11 @@ public class Detail {
             detail.partNumber=partNumber;
             return this;
         }
-        public Builder withPurchasePrice(BigDecimal purchasePrice){
+        public Builder withPurchasePrice(double purchasePrice){
             detail.purchasePrice=purchasePrice;
             return this;
         }
-        public Builder withSelling_price(BigDecimal sellingPrice){
+        public Builder withSelling_price(double sellingPrice){
             detail.sellingPrice=sellingPrice;
             return this;
         }
