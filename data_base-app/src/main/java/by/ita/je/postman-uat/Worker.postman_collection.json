@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "b4d82286-d96a-494b-acc5-f44f22c9c830",
+		"name": "Worker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddSakharuk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"firstName\": \"Andrej\",\r\n    \"secondName\": \"Sakharuk\",\r\n    \"phoneNumber\": 292001211 ,\r\n    \"bonus\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddKazak",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"firstName\": \"Andrej\",\r\n    \"secondName\": \"Sakharuk\",\r\n    \"phoneNumber\": 292001211 ,\r\n    \"bonus\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSilva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"firstName\": \"Andrej\",\r\n    \"secondName\": \"Sakharuk\",\r\n    \"phoneNumber\": 292001211 ,\r\n    \"bonus\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddKorako",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"firstName\": \"Andrej\",\r\n    \"secondName\": \"Sakharuk\",\r\n    \"phoneNumber\": 292001211 ,\r\n    \"bonus\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "FindAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/workers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAll",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [1, 2, 11]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/workers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Misha\",\r\n    \"secondName\": \"Kazak\",\r\n    \"phoneNumber\": 292001211,\r\n    \"bonus\": 20\r\n    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/worker?id=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"worker"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByList",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [7, 8, 5, 12]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/workers/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"workers",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
