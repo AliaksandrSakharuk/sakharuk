@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "abf135e9-833d-4b90-b43a-f2e116dde5ea",
+		"name": "Detail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddTurbina",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddWheel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddMotor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFilter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPompa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAll",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [1, 55, 66, 666]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"name\": \"turbina\",\r\n    \"partNumber\": 29450121,\r\n    \"purchasePrice\": 45 ,\r\n    \"extraCharge\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/detail?id=66",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "66"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByList",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [1, 55, 555, 5556]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/data_base-app/details/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"data_base-app",
+						"details",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
