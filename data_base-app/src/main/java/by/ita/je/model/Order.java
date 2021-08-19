@@ -1,20 +1,18 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Entity
-public class Client {
+@Table(name = "orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String firstName;
-    private String lastName;
+    private String firstNameClient;
+    private String lastNameClient;
     private long phoneNumber;
     private int volumeBonus;
     private BigDecimal bill;
@@ -29,20 +27,20 @@ public class Client {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstNameClient() {
+        return firstNameClient;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstNameClient(String firstNameClient) {
+        this.firstNameClient = firstNameClient;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastNameClient() {
+        return lastNameClient;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastNameClient(String lastNameClient) {
+        this.lastNameClient = lastNameClient;
     }
 
     public long getPhoneNumber() {
@@ -88,22 +86,22 @@ public class Client {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Client)) return false;
-        Client client = (Client) o;
-        return getId() == client.getId() && getPhoneNumber() == client.getPhoneNumber() && getVolumeBonus() == client.getVolumeBonus() && isCash() == client.isCash() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getBill(), client.getBill()) && Objects.equals(getDataTimeRequest(), client.getDataTimeRequest());
+        if (!(o instanceof Order)) return false;
+        Order order = (Order) o;
+        return getId() == order.getId() && getPhoneNumber() == order.getPhoneNumber() && getVolumeBonus() == order.getVolumeBonus() && isCash() == order.isCash() && Objects.equals(getFirstNameClient(), order.getFirstNameClient()) && Objects.equals(getLastNameClient(), order.getLastNameClient()) && Objects.equals(getBill(), order.getBill()) && Objects.equals(getDataTimeRequest(), order.getDataTimeRequest());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getPhoneNumber(), getVolumeBonus(), getBill(), isCash(), getDataTimeRequest());
+        return Objects.hash(getId(), getFirstNameClient(), getLastNameClient(), getPhoneNumber(), getVolumeBonus(), getBill(), isCash(), getDataTimeRequest());
     }
 
     @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstNameClient + '\'' +
+                ", lastName='" + lastNameClient + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", volumeBonus=" + volumeBonus +
                 ", bill=" + bill +
@@ -113,40 +111,40 @@ public class Client {
     }
 
     public static class Builder{
-        Client client;
+        Order order;
 
-        public Builder withFirstName(String firstName){
-            client.firstName=firstName;
+        public Builder withFirstName(String firstNameClient){
+            order.firstNameClient=firstNameClient;
             return this;
         }
 
-        public Builder withLastName(String lastName){
-            client.lastName=lastName;
+        public Builder withLastName(String lastNameClient){
+            order.lastNameClient=lastNameClient;
             return this;
         }
 
         public Builder withPhoneNumber(long phoneNumber){
-            client.phoneNumber=phoneNumber;
+            order.phoneNumber=phoneNumber;
             return this;
         }
         public Builder withVolumeBonus(int volumeBonus){
-            client.volumeBonus=volumeBonus;
+            order.volumeBonus=volumeBonus;
             return this;
         }
         public Builder withBill(BigDecimal bill){
-            client.bill=bill;
+            order.bill=bill;
             return this;
         }
         public Builder withCash(boolean isCash){
-            client.isCash=isCash;
+            order.isCash=isCash;
             return this;
         }
         public Builder withDataTime(ZonedDateTime dataTime){
-            client.dataTimeRequest=dataTime;
+            order.dataTimeRequest=dataTime;
             return this;
         }
-        public Client build(){
-            return client;
+        public Order build(){
+            return order;
         }
     }
 }

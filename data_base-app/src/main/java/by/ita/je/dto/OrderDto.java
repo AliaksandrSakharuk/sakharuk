@@ -2,27 +2,27 @@ package by.ita.je.dto;
 
 import java.math.BigDecimal;
 
-public class ClientDto {
-    private String firstName;
+public class OrderDto {
+    private String firstNameClient;
     private long phoneNumber;
     private int volumeBonus;
     private BigDecimal bill;
 
-    public ClientDto() {    }
+    public OrderDto() {    }
 
-    public ClientDto(String firstName, long phoneNumber, int volumeBonus, BigDecimal bill) {
-        this.firstName = firstName;
+    public OrderDto(String firstNameClient, long phoneNumber, int volumeBonus, BigDecimal bill) {
+        this.firstNameClient = firstNameClient;
         this.phoneNumber = phoneNumber;
         this.volumeBonus = volumeBonus;
         this.bill=bill;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstNameClient() {
+        return firstNameClient;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstNameClient) {
+        this.firstNameClient = firstNameClient;
     }
 
     public long getPhoneNumber() {
@@ -52,7 +52,7 @@ public class ClientDto {
     @Override
     public String toString() {
         return "ClientDto{" +
-                "firstName='" + firstName + '\'' +
+                "firstName='" + firstNameClient + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", volumeBonus=" + volumeBonus +
                 ", bill=" + bill +
