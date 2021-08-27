@@ -1,16 +1,18 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String nameOwner;
     private String nameCar;
@@ -19,6 +21,37 @@ public class Car {
     private boolean isElectro;
     private boolean isHibrid;
     private ZonedDateTime dataTimeStartFix;
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}
+                , mappedBy = "car", fetch = FetchType.LAZY)
+    private List<Detail> details;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ORDER_ID")
+    private  Order order;
+
+    public void addDetailToCar(Detail detail){
+        if(details==null){
+            details = new ArrayList<Detail>();
+        }
+        details.add(detail);
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public List<Detail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<Detail> details) {
+        this.details = details;
+    }
 
     public long getId() {
         return id;

@@ -3,6 +3,8 @@ package by.ita.je.service.api;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Car;
+import by.ita.je.model.Detail;
+
 import java.util.List;
 
 public interface ServiceCar {
@@ -19,4 +21,5 @@ public interface ServiceCar {
     void deleteById(Long id)throws NotFoundData;
 
     void deleteList(List <Long> listIds);
+
 }

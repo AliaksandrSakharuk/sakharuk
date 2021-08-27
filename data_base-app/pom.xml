@@ -11,8 +11,6 @@
     <artifactId>data_base-app</artifactId>
     <packaging>jar</packaging>
 
-
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>

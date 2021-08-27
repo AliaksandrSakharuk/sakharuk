@@ -1,17 +1,18 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String firstName;
     private String secondName;
@@ -20,6 +21,45 @@ public class Worker {
     private long phoneNumber;
     private boolean isCheif;
     private ZonedDateTime dataTimeStartWork;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "POSITION_ID")
+    private Position position;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "ORDERS_WORKER"
+            ,joinColumns = @JoinColumn(name = "worker_id")
+            ,inverseJoinColumns = @JoinColumn(name = "order_id")
+    )
+    private List<Order> listOrder;
+
+
+    public Worker() {
+    }
+
+    public Worker(long id, String firstName, String secondName, BigDecimal salary, int bonus, long phoneNumber, boolean isCheif, ZonedDateTime dataTimeStartWork) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.salary = salary;
+        this.bonus = bonus;
+        this.phoneNumber = phoneNumber;
+        this.isCheif = isCheif;
+        this.dataTimeStartWork = dataTimeStartWork;
+    }
+
+    public void setListOrder(List<Order> listOrder) {
+        this.listOrder = listOrder;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
 
     public long getId() {
         return id;
@@ -85,6 +125,7 @@ public class Worker {
         this.dataTimeStartWork = dataTimeStartWork;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,6 +155,8 @@ public class Worker {
 
     public static class Builder{
         private Worker worker;
+
+        public Builder(){ worker=new Worker();}
 
         public Builder withFirstName(String firstName){
             worker.firstName=firstName;

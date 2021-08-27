@@ -1,12 +1,13 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.DetailDao;
+import by.ita.je.dao.api.DetailDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Detail;
 import by.ita.je.service.api.ServiceDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Spliterator;
@@ -26,6 +27,7 @@ public class DetailServiceImpl implements ServiceDetail {
         detail.setSellingPrice(Math.random()*25);
         detail.setDataTimeDelivery(ZonedDateTime.now().plusDays(2));
         return detailDao.save(detail);
+
     }
 
     @Override
@@ -52,8 +54,8 @@ public class DetailServiceImpl implements ServiceDetail {
     @Override
     public Detail update(Long id, Detail detailNew) throws NotFoundData {
         final Detail detail = detailDao.findById(id)
-                .orElseThrow(() -> new NotFoundData(id + " not found"));
-        if(detailNew.getName()!="") detailNew.setName(detailNew.getName());
+                .orElseThrow(() -> new NotFoundData(" DETAIL_" + id + " not found"));
+        if(detailNew.getName()!="") detail.setName(detailNew.getName());
         if(detailNew.getPartNumber()!=0) detail.setPartNumber(detailNew.getPartNumber());
         if(detailNew.getPurchasePrice()!=0) detail.setPurchasePrice(detailNew.getPurchasePrice());
         if(detailNew.getExtraCharge()!=0) detail.setExtraCharge(detailNew.getExtraCharge());

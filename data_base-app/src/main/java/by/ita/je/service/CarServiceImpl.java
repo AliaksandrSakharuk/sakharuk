@@ -1,6 +1,6 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.CarDao;
+import by.ita.je.dao.api.CarDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Car;
@@ -74,4 +74,5 @@ public class CarServiceImpl implements ServiceCar {
     public void deleteList(List<Long> listIds) {
         carDao.deleteAllById(listIds);
     }
-}
+    }
+

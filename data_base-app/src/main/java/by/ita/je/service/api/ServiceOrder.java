@@ -5,7 +5,7 @@ import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Order;
 import java.util.List;
 
-public interface ServiceClient {
+public interface ServiceOrder {
     Order create(Order order) throws NotCorrectData;
 
     Order findById(Long id) throws NotFoundData;

@@ -1,15 +1,17 @@
 package by.ita.je.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String firstNameClient;
     private String lastNameClient;
@@ -18,6 +20,36 @@ public class Order {
     private BigDecimal bill;
     private boolean isCash;
     private ZonedDateTime dataTimeRequest;
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "order")
+    private List<Car> listCar;
+
+    @ManyToMany(cascade ={CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "ORDERS_WORKER"
+            ,joinColumns = @JoinColumn(name = "order_id")
+            ,inverseJoinColumns = @JoinColumn(name = "worker_id")
+    )
+    private List<Worker> listWorker;
+
+    public void addCarToOder(Car car){
+        if(listCar==null){
+            listCar= new ArrayList<Car>();
+        }
+        listCar.add(car);
+    }
+
+    public void setListCar(List<Car> listCar) {
+        this.listCar = listCar;
+    }
+
+    public List<Worker> getListWorker() {
+        return listWorker;
+    }
+
+    public void setListWorker(List<Worker> listWorker) {
+        this.listWorker = listWorker;
+    }
 
     public long getId() {
         return id;
@@ -110,8 +142,11 @@ public class Order {
                 '}';
     }
 
+
     public static class Builder{
         Order order;
+
+        public Builder(){ order=new Order();}
 
         public Builder withFirstName(String firstNameClient){
             order.firstNameClient=firstNameClient;

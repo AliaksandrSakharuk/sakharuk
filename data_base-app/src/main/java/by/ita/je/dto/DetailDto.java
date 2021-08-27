@@ -1,6 +1,7 @@
 package by.ita.je.dto;
 
 public class DetailDto {
+    private long id;
     private String name;
     private long partNumber;
     private double purchasePrice;
@@ -8,11 +9,12 @@ public class DetailDto {
 
     public DetailDto() {    }
 
-    public DetailDto(String name, long partNumber, double purchasePrice , int extraCharge) {
-        this.name = name;
-        this.partNumber = partNumber;
-        this.purchasePrice  = purchasePrice ;
-        this.extraCharge = extraCharge;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

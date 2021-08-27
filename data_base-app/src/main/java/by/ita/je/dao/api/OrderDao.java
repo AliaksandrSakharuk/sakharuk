@@ -1,4 +1,4 @@
-package by.ita.je.dao;
+package by.ita.je.dao.api;
 
 import by.ita.je.model.Order;
 import org.springframework.data.repository.CrudRepository;

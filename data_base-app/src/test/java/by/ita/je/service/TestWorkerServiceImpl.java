@@ -1,6 +1,6 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.WorkerDao;
+import by.ita.je.dao.api.WorkerDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Worker;

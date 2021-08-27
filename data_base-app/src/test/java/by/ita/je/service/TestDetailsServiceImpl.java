@@ -1,6 +1,6 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.DetailDao;
+import by.ita.je.dao.api.DetailDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Detail;
