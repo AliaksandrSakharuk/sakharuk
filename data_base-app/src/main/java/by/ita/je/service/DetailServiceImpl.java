@@ -54,7 +54,7 @@ public class DetailServiceImpl implements ServiceDetail {
     @Override
     public Detail update(Long id, Detail detailNew) throws NotFoundData {
         final Detail detail = detailDao.findById(id)
-                .orElseThrow(() -> new NotFoundData(" DETAIL_" + id + " not found"));
+                .orElseThrow(() -> new NotFoundData(id + " not found"));
         if(detailNew.getName()!="") detail.setName(detailNew.getName());
         if(detailNew.getPartNumber()!=0) detail.setPartNumber(detailNew.getPartNumber());
         if(detailNew.getPurchasePrice()!=0) detail.setPurchasePrice(detailNew.getPurchasePrice());

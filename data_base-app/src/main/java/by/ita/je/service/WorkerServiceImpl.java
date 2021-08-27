@@ -35,7 +35,7 @@ public class WorkerServiceImpl implements ServiceWorker {
     @Override
     public Worker findById(Long id) throws NotFoundData {
         final Worker worker= workerDao.findById(id)
-                .orElseThrow(() -> new NotFoundData(" WORKER_" + id + " not found"));
+                .orElseThrow(() -> new NotFoundData(id + " not found"));
         return worker;
     }
 
