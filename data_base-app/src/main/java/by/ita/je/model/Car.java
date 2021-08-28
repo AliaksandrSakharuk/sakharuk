@@ -1,7 +1,5 @@
 package by.ita.je.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import java.util.Objects;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String nameOwner;
     private String nameCar;
@@ -22,11 +19,10 @@ public class Car {
     private boolean isHibrid;
     private ZonedDateTime dataTimeStartFix;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}
-                , mappedBy = "car", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "car", fetch = FetchType.LAZY)
     private List<Detail> details;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "ORDER_ID")
     private  Order order;
 

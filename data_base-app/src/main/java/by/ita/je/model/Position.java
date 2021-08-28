@@ -1,7 +1,6 @@
 package by.ita.je.model;
 
 import by.ita.je.model.enums.Status;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import javax.persistence.*;
 
@@ -10,7 +9,6 @@ import javax.persistence.*;
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     @Enumerated(EnumType.STRING)
     private Status status;

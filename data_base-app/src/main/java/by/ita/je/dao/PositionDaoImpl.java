@@ -3,20 +3,18 @@ package by.ita.je.dao;
 import by.ita.je.dao.api.PositionDao;
 import by.ita.je.model.Position;
 import by.ita.je.model.enums.Status;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Component
-@RequiredArgsConstructor
+@Repository
 public class PositionDaoImpl implements PositionDao {
 
     @PersistenceContext
-    private final EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     @Transactional

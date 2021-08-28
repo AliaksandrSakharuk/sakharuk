@@ -1,7 +1,5 @@
 package by.ita.je.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -12,7 +10,6 @@ import java.util.Objects;
 public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String firstName;
     private String secondName;

@@ -1,7 +1,5 @@
 package by.ita.je.model;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -10,7 +8,6 @@ import java.util.Objects;
 public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private long id;
     private String name;
     private String notes;
@@ -20,14 +17,13 @@ public class Detail {
     private int extraCharge;
     private ZonedDateTime dataTimeDelivery;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "car_id")
     private Car car;
 
     public void setCar(Car car) {
         this.car = car;
     }
-
 
     public long getId() {
         return id;
