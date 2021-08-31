@@ -3,26 +3,17 @@ package by.ita.je.model;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Objects;
-@Table(name = "CAR")
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private long id;
-    @Column(name = "NAME_OWNER")
     private String nameOwner;
-    @Column(name = "NAME_CAR")
     private String nameCar;
-    @Column(name = "MILEAGE")
     private int mileage;
-    @Column(name = "POWER")
     private int power;
-    @Column(name = "IS_ELECTRO")
     private boolean isElectro;
-    @Column(name = "IS_HIBRID")
     private boolean isHibrid;
-    @Column(name = "DATA_TIME_START_FIX")
     private ZonedDateTime dataTimeStartFix;
 
     public long getId() {

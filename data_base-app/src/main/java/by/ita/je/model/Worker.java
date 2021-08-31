@@ -6,25 +6,16 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "worker")
 public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "second_name")
     private String secondName;
-    @Column(name = "salary")
     private BigDecimal salary;
-    @Column(name = "bonus")
     private int bonus;
-    @Column(name = "phone_number")
     private long phoneNumber;
-    @Column(name = "is_cheif")
     private boolean isCheif;
-    @Column(name = "data_start_work")
     private ZonedDateTime dataTimeStartWork;
 
     public long getId() {
