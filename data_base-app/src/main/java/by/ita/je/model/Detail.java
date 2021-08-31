@@ -1,23 +1,29 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Entity
+@Table(name = "detail")
 public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "notes")
     private String notes;
+    @Column(name = "PART_NUMBER")
     private long partNumber;
+    @Column(name = "SELLING_PRICE")
     private double sellingPrice;
+    @Column(name = "PURCHASE_PRICE")
     private double purchasePrice ;
+    @Column(name = "EXTRA_CHARGE")
     private int extraCharge;
+    @Column(name = "DATA_TIME_DELIVERY")
     private ZonedDateTime dataTimeDelivery;
 
     public long getId() {
