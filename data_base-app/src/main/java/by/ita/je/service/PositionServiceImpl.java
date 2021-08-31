@@ -10,25 +10,24 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class PositionServiceImpl implements ServicePosition {
 
     private final PositionDao positionDao;
 
     @Override
+    @Transactional
     public Position create(Position position) {
         return positionDao.save(position);
     }
 
     @Override
     public void delete(long id) {
-    Position position=positionDao.findPositionById(id);
-        positionDao.deletePosition(position);
+        positionDao.deletePosition(id);
     }
 
     @Override
+    @Transactional
     public Position update(long id, Position positionNew) {
-
         return positionDao.updatePosition(id, positionNew);
     }
 
@@ -43,6 +42,7 @@ public class PositionServiceImpl implements ServicePosition {
     }
 
     @Override
+    @Transactional
     public List<Position> findAll() {
         List<Position> result=positionDao.findAll();
         return  result;

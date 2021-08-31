@@ -6,7 +6,7 @@ import java.util.List;
 public interface PositionDao {
     public Position save(Position position);
 
-    public void deletePosition(Position position);
+    public void deletePosition(long id);
 
     public Position updatePosition(long id, Position position);
 
