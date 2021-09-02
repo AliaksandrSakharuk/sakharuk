@@ -2,7 +2,6 @@ server:
   port: 8003
   servlet:
     context-path: /data_base-app
-
 spring:
   jpa:
     hibernate:
