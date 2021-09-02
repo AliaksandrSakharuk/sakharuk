@@ -7,13 +7,13 @@ drop table if exists car;
 
 CREATE TABLE orders(
 id bigint NOT NULL AUTO_INCREMENT,
-first_name_client varchar(25),
-last_name_client varchar(25),
-phone_number int,
-volume_bonus smallint(50),
-bill decimal,
-is_cash bool,
-data_time_request datetime,
+first_name_client varchar(25) not null,
+last_name_client varchar(25) not null,
+phone_number int DEFAULT 0,
+volume_bonus smallint(50) DEFAULT 0,
+bill decimal DEFAULT 0,
+is_cash bool DEFAULT false,
+data_time_request datetime DEFAULT sysdate(),
 primary key(id)
 );
 
@@ -21,44 +21,44 @@ CREATE TABLE car(
 id bigint NOT NULL AUTO_INCREMENT,
 name_owner varchar(15) not null,
 name_car varchar(15) not null,
-mileage int,
-power int,
-is_electro bool,
-is_hibrid bool,
-DATA_TIME_START_FIX  datetime,
-order_id bigint,
+mileage int DEFAULT 0,
+power int DEFAULT 0,
+is_electro bool DEFAULT false,
+is_hibrid bool DEFAULT false,
+DATA_TIME_START_FIX  datetime DEFAULT sysdate(),
+order_id bigint DEFAULT 0,
 PRIMARY KEY (id),
 FOREIGN KEY (order_id) REFERENCES orders(id));
 
 CREATE TABLE detail(
 id bigint NOT NULL AUTO_INCREMENT,
 name varchar(15) not null,
-notes varchar(255),
-PART_NUMBER int,
-PURCHASE_PRICE double,
-SELLING_PRICE double,
-EXTRA_CHARGE smallint,
-CAR_ID bigint,
-DATA_TIME_DELIVERY datetime,
+notes varchar(255) not null,
+PART_NUMBER int DEFAULT 0,
+PURCHASE_PRICE double DEFAULT 0,
+SELLING_PRICE double DEFAULT 0,
+EXTRA_CHARGE smallint DEFAULT 0,
+CAR_ID bigint DEFAULT 0,
+DATA_TIME_DELIVERY datetime DEFAULT sysdate(),
 primary key(id),
 FOREIGN KEY (car_id) REFERENCES car(id));
 
 CREATE TABLE positions(
 id bigint NOT NULL AUTO_INCREMENT,
-status varchar(15),
+status varchar(15) not null,
 primary key(id)
 );
 
 CREATE TABLE worker(
 id bigint NOT NULL AUTO_INCREMENT,
-first_name varchar(15),
-second_name varchar(15),
-salary decimal,
-bonus smallint(100),
-phone_number int,
-is_cheif bool,
-data_time_start_work datetime,
-position_id bigint,
+first_name varchar(15) not null,
+second_name varchar(15) not null,
+salary decimal DEFAULT 0,
+bonus smallint(100) DEFAULT 0,
+phone_number int DEFAULT 0,
+is_cheif bool DEFAULT false,
+data_time_start_work datetime DEFAULT sysdate(),
+position_id bigint DEFAULT 0,
 primary key(id),
 FOREIGN KEY (position_id) REFERENCES positions(id)
 );
