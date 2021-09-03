@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequiredArgsConstructor
 public class SearcherController {
@@ -18,8 +21,12 @@ public class SearcherController {
     private final SearcherService searcherService;
 
     @GetMapping("/search_JPQL")
-    public CarDto findByName(@RequestBody FieldDto fieldDto){
-        final Car car=searcherService.findCarToWorkerByTimePeriod(fieldDto);
-        return objectMapper.convertValue(car,CarDto.class);
+    public List<CarDto> findByName(@RequestBody FieldDto fieldDto){
+        final List<Car> listCar= (List<Car>) searcherService.findCarToWorkerByTimePeriod(fieldDto);
+        List<CarDto> listCarDto=listCar.stream()
+                .map(car -> objectMapper.convertValue(car, CarDto.class))
+                .collect(Collectors.toList());
+
+        return listCarDto;
     }
 }
