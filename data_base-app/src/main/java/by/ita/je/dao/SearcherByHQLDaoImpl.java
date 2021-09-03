@@ -3,12 +3,10 @@ package by.ita.je.dao;
 import by.ita.je.dao.api.SearcherByHQLDao;
 import by.ita.je.model.Car;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.List;
 @Repository
