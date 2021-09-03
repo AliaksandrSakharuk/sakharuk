@@ -7,13 +7,15 @@ import by.ita.je.service.api.SearcherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.ZonedDateTime;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class SearcherServiceImpl implements SearcherService {
     private final SearcherDao searcherDao;
 
     @Override
-    public Car findCarToWorkerByTimePeriod(FieldDto fieldDto) {
+    public List<Car> findCarToWorkerByTimePeriod(FieldDto fieldDto) {
         String nameCar=fieldDto.getNameCar();
         ZonedDateTime fromDataTimeStartWork = fieldDto.getFromDataTimeStartWork();
         ZonedDateTime toDataTimeStartWork = fieldDto.getToDataTimeStartWork();
