@@ -21,12 +21,21 @@ public class SearcherController {
     private final SearcherService searcherService;
 
     @GetMapping("/search_JPQL")
-    public List<CarDto> findByName(@RequestBody FieldDto fieldDto){
-        final List<Car> listCar= (List<Car>) searcherService.findCarToWorkerByTimePeriod(fieldDto);
+    public List<CarDto> findCarByJPQL(@RequestBody FieldDto fieldDto){
+        final List<Car> listCar= (List<Car>) searcherService.findCarToWorkerByJPQL(fieldDto);
         List<CarDto> listCarDto=listCar.stream()
                 .map(car -> objectMapper.convertValue(car, CarDto.class))
                 .collect(Collectors.toList());
 
+        return listCarDto;
+    }
+
+    @GetMapping("/search_HQL")
+    public List<CarDto> findCarByHQL(@RequestBody FieldDto fieldDto){
+        final List<Car> listCar=searcherService.findCarToWorkerByJPQL(fieldDto);
+        List<CarDto> listCarDto=listCar.stream()
+                .map(car -> objectMapper.convertValue(car, CarDto.class))
+                .collect(Collectors.toList());
         return listCarDto;
     }
 }
