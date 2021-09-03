@@ -4,8 +4,6 @@ server:
     context-path: /data_base-app
 spring:
   jpa:
-    hibernate:
-      ddl-auto: none
     show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
   datasource:
