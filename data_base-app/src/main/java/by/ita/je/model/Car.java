@@ -1,10 +1,9 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +18,36 @@ public class Car {
     private boolean isElectro;
     private boolean isHibrid;
     private ZonedDateTime dataTimeStartFix;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "car", fetch = FetchType.LAZY)
+    private List<Detail> details;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "ORDER_ID")
+    private  Order order;
+
+    public void addDetailToCar(Detail detail){
+        if(details==null){
+            details = new ArrayList<Detail>();
+        }
+        details.add(detail);
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public List<Detail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<Detail> details) {
+        this.details = details;
+    }
 
     public long getId() {
         return id;

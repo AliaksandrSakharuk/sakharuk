@@ -1,9 +1,12 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.WorkerDao;
+import by.ita.je.dao.api.PositionDao;
+import by.ita.je.dao.api.WorkerDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
+import by.ita.je.model.Position;
 import by.ita.je.model.Worker;
+import by.ita.je.model.enums.Status;
 import by.ita.je.service.api.ServiceWorker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,12 +21,14 @@ import java.util.stream.StreamSupport;
 @RequiredArgsConstructor
 public class WorkerServiceImpl implements ServiceWorker {
     private final WorkerDao workerDao;
+    private final PositionDao positionDao;
 
     @Override
     public Worker create(Worker worker) throws NotCorrectData {
         if(worker.getSecondName()==null) throw new NotCorrectData("Not correct data NAME_WORKER");
         worker.setSalary(BigDecimal.valueOf((long) (Math.random()*1000)));
         worker.setDataTimeStartWork(ZonedDateTime.now().minusYears((long) (Math.random()*10)));
+
         return workerDao.save(worker);
     }
 

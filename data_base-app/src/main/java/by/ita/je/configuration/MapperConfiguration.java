@@ -6,6 +6,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 @Configuration
 public class MapperConfiguration {
     @Bean
@@ -15,4 +18,6 @@ public class MapperConfiguration {
                 .registerModule(new JavaTimeModule());;
         return objectMapper;
     }
+
+
 }

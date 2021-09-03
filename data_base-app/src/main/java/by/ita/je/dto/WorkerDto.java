@@ -1,18 +1,30 @@
 package by.ita.je.dto;
 
+
 public class WorkerDto {
+    private long id;
     private String firstName;
     private String secondName;
     private long phoneNumber;
     private int bonus;
+    private PositionDto position;
 
     public WorkerDto() {    }
 
-    public WorkerDto(String firstName, String secondName, long phoneNumber, int bonus) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.phoneNumber = phoneNumber;
-        this.bonus = bonus;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public PositionDto getPosition() {
+        return position;
+    }
+
+    public void setPosition(PositionDto position) {
+        this.position = position;
     }
 
     public String getFirstName() {

@@ -1,18 +1,40 @@
 package by.ita.je.dto;
 
+import java.util.List;
+
 public class CarDto {
+    private long id;
     private String nameCar;
     private String nameOwner;
     private int mileage;
     private int power;
+    private List<DetailDto> details;
+    private OrderDto order;
 
     public CarDto() {    }
 
-    public CarDto(String nameCar, String nameOwner,  int mileage, int power) {
-        this.nameCar = nameCar;
-        this.nameOwner = nameOwner;
-        this.mileage = mileage;
-        this.power = power;
+    public OrderDto getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderDto order) {
+        this.order = order;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<DetailDto> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<DetailDto> details) {
+        this.details = details;
     }
 
     public String getNameCar() {

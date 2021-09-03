@@ -1,9 +1,6 @@
 package by.ita.je.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -19,6 +16,14 @@ public class Detail {
     private double purchasePrice ;
     private int extraCharge;
     private ZonedDateTime dataTimeDelivery;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
     public long getId() {
         return id;
@@ -113,6 +118,8 @@ public class Detail {
 
     public static class Builder{
         Detail detail;
+
+        public Builder(){ detail=new Detail();}
 
         public Builder withName(String name){
             detail.name=name;

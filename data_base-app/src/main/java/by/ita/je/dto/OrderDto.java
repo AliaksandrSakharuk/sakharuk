@@ -1,28 +1,42 @@
 package by.ita.je.dto;
 
+import by.ita.je.model.Worker;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public class OrderDto {
+    private long id;
     private String firstNameClient;
     private long phoneNumber;
     private int volumeBonus;
     private BigDecimal bill;
+    private List<WorkerDto> listWorker;
 
     public OrderDto() {    }
 
-    public OrderDto(String firstNameClient, long phoneNumber, int volumeBonus, BigDecimal bill) {
+    public List<WorkerDto> getListWorker() {
+        return listWorker;
+    }
+
+    public void setListWorker(List<WorkerDto> listWorker) {
+        this.listWorker = listWorker;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstNameClient(String firstNameClient) {
         this.firstNameClient = firstNameClient;
-        this.phoneNumber = phoneNumber;
-        this.volumeBonus = volumeBonus;
-        this.bill=bill;
     }
 
     public String getFirstNameClient() {
         return firstNameClient;
-    }
-
-    public void setFirstName(String firstNameClient) {
-        this.firstNameClient = firstNameClient;
     }
 
     public long getPhoneNumber() {

@@ -2,7 +2,7 @@ package by.ita.je.controllers;
 
 import by.ita.je.dto.OrderDto;
 import by.ita.je.model.Order;
-import by.ita.je.service.api.ServiceClient;
+import by.ita.je.service.api.ServiceOrder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class OrderControllers {
 
     private final ObjectMapper objectMapper;
-    private final ServiceClient clientService;
+    private final ServiceOrder clientService;
 
     @PostMapping("/order")
     public OrderDto create(@RequestBody OrderDto orderDto){

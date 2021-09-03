@@ -1,10 +1,10 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.OrderDao;
+import by.ita.je.dao.api.OrderDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Order;
-import by.ita.je.service.api.ServiceClient;
+import by.ita.je.service.api.ServiceOrder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.time.ZonedDateTime;
@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
-public class OrderServiceImpl implements ServiceClient {
+public class OrderServiceImpl implements ServiceOrder {
 
     private final OrderDao orderDao;
 

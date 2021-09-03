@@ -1,6 +1,6 @@
 package by.ita.je.service;
 
-import by.ita.je.dao.CarDao;
+import by.ita.je.dao.api.CarDao;
 import by.ita.je.exception.NotCorrectData;
 import by.ita.je.exception.NotFoundData;
 import by.ita.je.model.Car;
