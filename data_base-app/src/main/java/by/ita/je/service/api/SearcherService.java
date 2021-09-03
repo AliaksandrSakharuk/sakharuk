@@ -6,5 +6,7 @@ import by.ita.je.model.Car;
 import java.util.List;
 
 public interface SearcherService {
-    List<Car> findCarToWorkerByTimePeriod(FieldDto fieldDto);
+    List<Car> findCarToWorkerByJPQL(FieldDto fieldDto);
+
+    public List<Car> findCarToWorkerByHQL(FieldDto fieldDto);
 }
