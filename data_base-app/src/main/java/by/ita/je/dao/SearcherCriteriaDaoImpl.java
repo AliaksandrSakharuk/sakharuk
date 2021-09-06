@@ -27,7 +27,6 @@ public class SearcherCriteriaDaoImpl implements SearcherCriteriaDao {
         CriteriaBuilder criteriaBuilder=entityManager.getCriteriaBuilder();
         CriteriaQuery<Car> query=criteriaBuilder.createQuery(Car.class);
         Root<Car> root=query.from(Car.class);
-        Join<Car, Order> orderJoin=root.join(Car_.ORDER);
         Join<Order, Worker> workerJoin=root.join(Order_.LIST_WORKER);
         query.select(root);
         query.where(criteriaBuilder.and(criteriaBuilder.between(workerJoin.get(Worker_.DATA_TIME_START_WORK)
