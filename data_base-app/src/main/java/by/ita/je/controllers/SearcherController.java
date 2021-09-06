@@ -37,4 +37,13 @@ public class SearcherController {
                 .collect(Collectors.toList());
         return listCarDto;
     }
+    @GetMapping("/search_criteria")
+    public List<CarDto> findCarByCriteria(@RequestBody FieldDto fieldDto){
+        final List<Car> listCar=searcherService.findCarToWorkerByJPQL(fieldDto);
+        List<CarDto> listCarDto=listCar.stream()
+                .map(car -> objectMapper.convertValue(car, CarDto.class))
+                .collect(Collectors.toList());
+        return listCarDto;
+    }
+
 }

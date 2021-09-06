@@ -9,4 +9,6 @@ public interface SearcherService {
     List<Car> findCarToWorkerByJPQL(FieldDto fieldDto);
 
     public List<Car> findCarToWorkerByHQL(FieldDto fieldDto);
+
+    List<Car> findCarToWorkerByCriteria(FieldDto fieldDto);
 }
