@@ -1,6 +1,6 @@
 package by.ita.je.dao;
 
-import by.ita.je.dao.api.SearcherByHQLDao;
+import by.ita.je.dao.api.SearcherHQLDao;
 import by.ita.je.model.Car;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import java.time.ZonedDateTime;
 import java.util.List;
 @Repository
-public class SearcherByHQLDaoImpl implements SearcherByHQLDao {
+public class SearcherHQLDaoImpl implements SearcherHQLDao {
 
     @PersistenceUnit
     private EntityManagerFactory emf;

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-public interface SearcherDao extends JpaRepository<Car, Long> {
+public interface SearcherJPQLDao extends JpaRepository<Car, Long> {
 
     @Query(value = "SELECT * FROM CAR INNER JOIN ORDERS ON car.order_id=orders.id INNER JOIN ORDERS_WORKER ON " +
             "orders.id=ORDERS_WORKER.ORDER_ID INNER JOIN WORKER ON ORDERS_WORKER .WORKER_ID =worker.id WHERE " +
