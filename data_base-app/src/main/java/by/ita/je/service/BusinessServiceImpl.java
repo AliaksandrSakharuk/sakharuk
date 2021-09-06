@@ -70,14 +70,21 @@ public class BusinessServiceImpl implements ServiceBusiness {
     private Order createOrder(){
         return new Order.Builder()
                 .withFirstName("IT-ACADEMY")
+                .withLastName("IVANYCH")
                 .withBill(new BigDecimal(123))
                 .withPhoneNumber(9393939)
                 .build();
     }
 
     private  List<Worker> createWorkers(){
-        Worker master=serviceWorker.create(new Worker.Builder().withSecondName("SAKHARUK").build());
-        Worker assistent=serviceWorker.create(new Worker.Builder().withSecondName("KAZAK").build());
+        Worker master=serviceWorker.create(new Worker.Builder()
+                                                    .withSecondName("SAKHARUK")
+                                                    .withFirstName("VADIM")
+                                                    .build());
+        Worker assistent=serviceWorker.create(new Worker.Builder()
+                                                    .withSecondName("KAZAK")
+                                                    .withFirstName("SASHA")
+                                                    .build());
         master.setPosition(Position.builder()
                 .status(Status.MASTER)
                 .build());
