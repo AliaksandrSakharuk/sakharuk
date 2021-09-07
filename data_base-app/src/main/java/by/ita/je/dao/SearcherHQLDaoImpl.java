@@ -20,7 +20,7 @@ public class SearcherHQLDaoImpl implements SearcherHQLDao {
     public List<Car> findCarByWorkerHQL(String nameCar, ZonedDateTime fromDataTimeStartWork
             , ZonedDateTime toDataTimeStartWork) {
         entityManager=emf.createEntityManager();
-        Query query= entityManager.createQuery("CarFindByOrdersBill", Car.class);
+        Query query= entityManager.createNamedQuery("FindCarByHQL", Car.class);
         query.setParameter("from_data", fromDataTimeStartWork);
         query.setParameter("to_data",toDataTimeStartWork);
         query.setParameter("name", nameCar);
