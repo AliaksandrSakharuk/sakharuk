@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 @Entity
-@NamedQuery(name = "CarFindByOrdersBill", query = "SELECT car FROM Car car JOIN car.order JOIN car.order.listWorker worker " +
+@NamedQuery(name = "FindCarByHQL", query = "SELECT car FROM Car car JOIN car.order JOIN car.order.listWorker worker " +
         "WHERE (worker.dataTimeStartWork BETWEEN  :from_data AND :to_data) AND car.nameCar=:name")
 public class Car {
     @Id
