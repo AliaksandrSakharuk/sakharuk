@@ -1,7 +1,6 @@
 package by.ita.je.dao;
 
 import by.ita.je.dao.api.SearcherCriteriaDao;
-import by.ita.je.dao.api.SearcherHQLDao;
 import by.ita.je.model.Car;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.time.ZonedDateTime;
 import java.util.List;
 
