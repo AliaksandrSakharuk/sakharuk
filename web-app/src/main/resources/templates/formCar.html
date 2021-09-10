@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my SERVICE</title>
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/newcar}" th:object="${card}" method="post">
+    <p>Марака машины: <input type="text" th:field="*{nameCar}" /></p>
+    <p>Владелец: <input type="text"  th:field="*{nameOwner}" /></p>
+    <p>Пробег: <input type="text"  th:field="*{mileage}" /></p>
+    <p>Мощность: <input type="text"  th:field="*{power}" /></p>
+    <p><input type="submit" value="Создать" /> <input type="reset" value="Сбросить" /></p>
+</form>
+</div>
+<br>
+<a href="/web-app/sto">Вернуться на главную</a>
+</body>
+</html>

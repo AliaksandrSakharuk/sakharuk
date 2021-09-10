@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LIST's CAR</title>
+</head>
+<body>
+<h1>Список найденных машин</h1>
+<hr>
+
+<div th:if="${not #lists.isEmpty(cards)}">
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th>id</th>
+            <th>name_car</th>
+            <th>name_owner</th>
+            <th>mileage</th>
+            <th>power</th>
+        </tr>
+        <tr th:each="card : ${cards}">
+            <td th:text="${card.id}">Nothing</td>
+            <td th:text="${card.nameCar}">Nothing</td>
+            <td th:text="${card.nameOwner}">Nothing</td>
+            <td th:text="${card.mileage}">Nothing</td>
+            <td th:text="${card.power}">Nothing</td>
+        </tr>
+    </table>
+</div>
+<br>
+<a href="/web-app/sto">Вернуться на главную</a>
+</body>
+</html>

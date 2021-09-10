@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my SERVICE</title>
+</head>
+<style>
+   .brd {
+    border: 4px double black; /* Параметры границы */
+    background: #fc3; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
+  </style>
+<body>
+<div class="brd">
+    <h1>Учетная запись создана</h1>
+    <p th:text="'Марка машины: ' + ${card.nameCar}" />
+    <p th:text="'Владелец: ' + ${card.nameOwner}" />
+    <p th:text="'Пробег: ' + ${card.mileage}" />
+    <p th:text="'Мощность: ' + ${card.power}" />
+
+</div>
+<br>
+<a href="/web-app/car">Добваить новый автомобиль</a>
+<br>
+<a href="/web-app/sto">Вернуться на главную</a>
+</body>
+</html>
