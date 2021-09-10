@@ -1,35 +1,25 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to my SERVICE</title>
+    <title>CAR WITH IT DEPENDECIES</title>
 </head>
-<style>
-   .brd {
-    border: 4px double black; /* Параметры границы */
-    background: #fc3; /* Цвет фона */
-    padding: 10px; /* Поля вокруг текста */
-   }
-  </style>
 <body>
-<div class="brd">
-    <h1>Учетная запись создана</h1>
-    <p th:text="'ID: ' + ${card.id}" />
-    <p th:text="'Марка машины: ' + ${card.nameCar}" />
-    <p th:text="'Владелец: ' + ${card.nameOwner}" />
-    <p th:text="'Пробег: ' + ${card.mileage}" />
-    <p th:text="'Мощность: ' + ${card.power}" />
-</div>
+<h1>Учетная запись автомобиля c ID = <t th:text="${card.id}" /> найдена</h1>
+<p th:text="'Марка машины: ' + ${card.nameCar}" />
+<p th:text="'Владелец: ' + ${card.nameOwner}" />
+<p th:text="'Пробег: ' + ${card.mileage}" />
+<p th:text="'Мощность: ' + ${card.power}" />
 <br>
 <br>
 <div th:if= "${card.order != null}">
-    <h2 style="background-color:aqua">СЧЕТ:
-        <p th:text="'ID: ' + ${card.order.id}" />
-        <p th:text="'Имя клиента: ' + ${card.order.firstNameClient}" />
-        <p th:text="'Номер телефона: ' + ${card.order.phoneNumber}" />
-        <p th:text="'Бонус: ' + ${card.order.volumeBonus}" />
-        <p th:text="'Счет: ' + ${card.order.bill}" />
-    </h2>
+<h2 style="background-color:aqua">СЧЕТ:
+    <p th:text="'ID: ' + ${card.order.id}" />
+    <p th:text="'Имя клиента: ' + ${card.order.firstNameClient}" />
+    <p th:text="'Номер телефона: ' + ${card.order.phoneNumber}" />
+    <p th:text="'Бонус: ' + ${card.order.volumeBonus}" />
+    <p th:text="'Счет: ' + ${card.order.bill}" />
+</h2>
     <h1>Список рабов, которые работают с этой машиной:</h1>
     <div th:if= "${card.order.listWorker != null}">
         <table border="1" width="100%" cellpadding="5">
@@ -54,7 +44,7 @@
 </div>
 <br>
 <div th:if="${not #lists.isEmpty(card.details)}">
-    <h1>Список деталей для этого автомобиля:</h1>
+<h1>Список деталей для этого автомобиля:</h1>
     <table border="1" width="100%" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -73,7 +63,7 @@
     </table>
 </div>
 <br>
-<a href="/web-app/car">Добваить новый автомобиль</a>
+<br>
 <br>
 <a href="/web-app/sto">Вернуться на главную</a>
 </body>

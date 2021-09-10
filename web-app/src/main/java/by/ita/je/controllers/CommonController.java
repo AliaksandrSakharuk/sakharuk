@@ -1,16 +1,16 @@
 package by.ita.je.controllers;
 
 import by.ita.je.dto.CarDto;
+import by.ita.je.dto.WorkerDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class CommonController {
@@ -30,7 +30,7 @@ public class CommonController {
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl="http://localhost:8003/data_base-app/business";
         CarDto responce=restTemplate.postForObject(fooResourceUrl, carDto, CarDto.class);
-        model.addAttribute("card", carDto);
+        model.addAttribute("card", responce);
         return "newCar";
     }
     @GetMapping(value = "/car/list")
@@ -41,6 +41,14 @@ public class CommonController {
         List<CarDto> list = Arrays.asList(responseEntity.getBody());
         model.addAttribute("cards", list);
         return "listcar";
+    }
+    @GetMapping(value = "/result")
+    public  String findById(@RequestParam(value = "id", required = false) String id, Model model){
+        RestTemplate restTemplate = new RestTemplate();
+        String fooResourceUrl= "http://localhost:8003/data_base-app/business/"+id;
+        ResponseEntity responseEntity=restTemplate.getForEntity(fooResourceUrl, CarDto.class);
+        model.addAttribute("card", responseEntity.getBody());
+        return "found_car";
     }
 
 }
