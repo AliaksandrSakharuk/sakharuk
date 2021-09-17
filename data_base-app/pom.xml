@@ -33,5 +33,12 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-jpamodelgen -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>6.0.0.Alpha9</version>
+        </dependency>
+
     </dependencies>
 </project>

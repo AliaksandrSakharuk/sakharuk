@@ -93,7 +93,7 @@ values('KEY', 'BROLE DOWN ELECTRONIC', 123442, 55, 3, sysdate());
 
 INSERT INTO positions(status) values('MASTER');
 INSERT INTO positions(status) values('ASSISTANT');
-INSERT INTO positions(status) values('MECHANIC');
+INSERT INTO positions(status) values('MECHANIСAL');
 
 INSERT INTO worker(second_name, first_name, salary, is_cheif, position_id, data_time_start_work)
 values ('KAZAK', 'VADIM', 10000.55, true, 1, '2015-09-01');

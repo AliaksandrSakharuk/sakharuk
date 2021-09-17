@@ -4,9 +4,7 @@ import by.ita.je.dao.api.PositionDao;
 import by.ita.je.model.Position;
 import by.ita.je.model.enums.Status;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
