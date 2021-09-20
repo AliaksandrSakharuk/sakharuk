@@ -21,7 +21,6 @@ public class CommonController {
     private String urlSearcher= "http://localhost:8003/data_base-app/";
     private String formTime="T00:00:00.000000+03:00";
 
-
     @GetMapping(value = "/")
     public String home() {
         return "sto";
