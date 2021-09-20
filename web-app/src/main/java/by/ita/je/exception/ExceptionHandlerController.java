@@ -1,17 +1,26 @@
 package by.ita.je.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class ExceptionHandlerController  extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler
-    public ResponseEntity<InCorrectData> handlerException(Exception exception){
-        InCorrectData data=new InCorrectData();
-        data.setInfo(exception.getMessage());
-        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(Exception.class)
+    public String handlerException(Model model, Exception exception){
+      String messege;
+        int numberStatus=Integer.valueOf(exception.getMessage().substring(0,3).strip());
+        if(numberStatus==404){
+            messege="Сервер не может найти запрашиваемый ресурс!";
+        }
+        else if(numberStatus>=500){
+            messege="Ошибка на стороне сервера";
+        }
+        else messege="Некорректный запрос";
+        model.addAttribute("messege", messege);
+        model.addAttribute("number", numberStatus);
+        return "error";
     }
 }

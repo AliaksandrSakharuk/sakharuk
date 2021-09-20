@@ -36,8 +36,9 @@ public class PositionDaoImpl implements PositionDao {
     public Position updatePosition(long id,Position position) {
         entityManager=emf.createEntityManager();
         position.setId(id);
-        entityManager.detach(position);
+        entityManager.getTransaction().begin();
         entityManager.merge(position);
+        entityManager.getTransaction().commit();
         return position;
     }
 
@@ -55,7 +56,10 @@ public class PositionDaoImpl implements PositionDao {
     @Override
     public Position findPositionById(long id) {
         entityManager=emf.createEntityManager();
-        return entityManager.find(Position.class, id);
+        entityManager.getTransaction().begin();
+        Position position=entityManager.find(Position.class, id);
+        entityManager.getTransaction().commit();
+        return position;
     }
 
     @Override

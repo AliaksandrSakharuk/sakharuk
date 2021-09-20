@@ -5,16 +5,56 @@
     <title>Welcome to my SERVICE</title>
 </head>
 <body>
-<a href="/web-app/car">Добваить новый автомобиль</a>
-<br>
-<br>
-<a href="/web-app/car/list">Посмотреть весь список автомобилей</a>
-<br>
+<form method="get" action="/web-app/car">
+    <button type="submit">Добваить новый автомобиль</button>
+</form>
 <br>
 <form action="/web-app/result" method="get">
-        <label for="id">Найти машину по ID:</label>
-      <input name="id" type="text" id="id"/>
+    <label for="id">Найти машину по ID:</label>
+    <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Найти"/>
 </form>
+<br>
+<br>
+<form action="/web-app/delete_car" method="get">
+    <label for="id">Удалить машину по ID:</label>
+    <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
+    <input type="submit" value="Удалить"/>
+</form>
+<br>
+<br>
+<form action="/web-app/update_form" method="get">
+    <label for="id">Изменить даныне по машине по ID:</label>
+    <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
+    <input type="submit" value="Изменить"/>
+</form>
+<br>
+<form method="get" action="/web-app/car/list">
+    <button type="submit">Посмотреть весь список автомобилей</button>
+</form>
+<br>
+<table border="1" width="60%" cellpadding="5">
+    <tr>
+        <td>
+    <h2>ПОИСК SEARCHER:</h2>
+<form id="field" method="get">
+    <label for="date_from">С даты: </label>
+    <input type="date" id="date_from" required name="date_from"/>
+
+    <label for="date_to">По дату: </label>
+    <input type="date" id="date_to" required name="date_to"/>
+
+    <label for="name_car">Название машины: </label>
+    <input type="text" id="name_car"  name="name_car" required pattern="^[a-zA-Z]+$"/>
+</form>
+<br>
+<p>
+    <button type="submit" form="field" formaction="/web-app/hql" >Find by HQL</button>
+    <button type="submit" form="field" formaction="/web-app/jpql" >Find by JPQL</button>
+    <button type="submit" form="field" formaction="/web-app/criteria" >Find by CRITERIA</button>
+</p>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

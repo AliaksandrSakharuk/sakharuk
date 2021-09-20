@@ -21,6 +21,7 @@ public class BusinessServiceImpl implements ServiceBusiness {
     private final ServiceDetail serviceDetail;
     private final ServiceWorker serviceWorker;
     private final ServicePosition servicePosition;
+    private final ServiceOrder serviceOrder;
 
     @Override
     public Car create(Car car) {
@@ -31,9 +32,16 @@ public class BusinessServiceImpl implements ServiceBusiness {
 
     @Override
     public Car update(Long id, Car car) {
-        car.getDetails().forEach(detail -> serviceDetail.update(detail.getId(),detail));
-        car.getOrder().getListWorker().forEach(worker
-                -> servicePosition.update(worker.getPosition().getId(),worker.getPosition()));
+        if(Objects.nonNull(car.getDetails())) {
+            car.getDetails().forEach(detail -> serviceDetail.update(detail.getId(), detail));
+        }
+        if (Objects.nonNull(car.getOrder())) {
+            serviceOrder.update(car.getOrder().getId(), car.getOrder());
+        }
+        if (Objects.nonNull(car.getOrder().getListWorker())){
+            car.getOrder().getListWorker().forEach(worker
+                    -> servicePosition.update(worker.getPosition().getId(), worker.getPosition()));
+        }
         return car;
     }
 

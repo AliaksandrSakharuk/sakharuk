@@ -1,6 +1,5 @@
 package by.ita.je.dto;
 
-import by.ita.je.model.Worker;
 
 import java.math.BigDecimal;
 import java.util.List;
