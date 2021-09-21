@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LIST's CAR</title>
+</head>
+<body>
+
+<form method="get" action="/web-app/">
+    <button type="submit">На главную страницу</button>
+</form>
+<h1>Список найденных машин:</h1>
+<hr>
+<div th:if="${not #lists.isEmpty(cards)}">
+    <div th:each="card  : ${cards}">
+        <form id="car" method="get">
+            <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
+        </form>
+        <button type="submit" form="car" formaction="/web-app/update_form" >ИЗМЕНИТЬ</button>
+        <button type="submit" form="car" formaction="/web-app/delete_car" >УДАЛИТЬ</button>
+        <p th:text="'ID: ' + ${card.id}" />
+        <p th:text="'Марка машины: ' + ${card.nameCar}" />
+        <p th:text="'Владелец: ' + ${card.nameOwner}" />
+        <p th:text="'Пробег: ' + ${card.mileage}" />
+        <p th:text="'Мощность: ' + ${card.power}" />
+        <hr>
+    </div>
+</div>
+<br>
+</body>
+</html>
