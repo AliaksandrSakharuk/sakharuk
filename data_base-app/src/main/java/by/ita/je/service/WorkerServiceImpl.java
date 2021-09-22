@@ -61,7 +61,7 @@ public class WorkerServiceImpl implements ServiceWorker {
         if(workerNew.getSecondName()!="") worker.setSecondName(workerNew.getSecondName());
         if(workerNew.getPhoneNumber()!=0) worker.setPhoneNumber(workerNew.getPhoneNumber());
         if(workerNew.getBonus()!=0) worker.setBonus(workerNew.getBonus());
-        return workerDao.save(workerNew);
+        return workerDao.save(worker);
     }
 
     @Override
