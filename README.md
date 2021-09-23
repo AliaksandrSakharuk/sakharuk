@@ -200,7 +200,94 @@
   ```sql
   INSERT INTO `users` (`username`, `password`) VALUES ('admin', '$2a$10$IqTJTjn39IU5.7sSCDQxzu3xug6z/LPU6IF0azE/8CkHCwYEnwBX.');
   ```
-### 4.3 Задание
-* Реализуйте сервисную часть `Security` согласно [гайду](https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial)
+### 4.3 Задание ([шпаргалка](https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial))
+* Подключаем модуль аутентификации и авторизации.
+  ```
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>  
+  ```
+* Пишем `CrudRepository<Users, Long>`(можно создать `DAO` аналогично, любым другим известным способом)
+    * В `DAO` у нас должен быть 1 метод, который по полю `LOGIN`, находит запись о пользователе.
+* Создаем Специальную сущность на базе интерфейса `org.springframework.security.core.userdetails.UserDetails`.
+  * Основной элемент безопасности реализованный в `Spring` базируется на ваших реализациях `UserDetails`, `UserDetailsService`. Где `UserDetails` являться оберткой для вашей модели с данными об пользователе, а интерфейс указывает на ожидаемое поведение.
+* Создаем сервис на базе `org.springframework.security.core.userdetails.UserDetailsService`, который выполняет бизнес логику вашей безопасности.
+  * У нас она примитивна, мы заворачиваем нашу модель в известную для `Spring.Security` оболочку.
+    ```
+    @Override
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        User user = userRepository.getUserByUsername(username);
+         
+        if (user == null) {
+            throw new UsernameNotFoundException("Could not find user");
+        }
+         
+        return new MyUserDetails(user);
+    }
+    ```
+    
+* Последний этап, это настройка конфигурации вашей безопасности.
+  * Создаем конфигурацию и аннотируем ее как конфигурацию безопасности. Конфигурация реализует ожидаемое поведение через интерфейс `WebSecurityConfigurerAdapter`. Существует множество других, но в данном случае нам достаточно этого.
+    ```
+        @Configuration
+        @EnableWebSecurity
+        public class WebSecurityConfig extends WebSecurityConfigurerAdapter {...}
+    ```
+  
+  * Реализуем методы для `WebSecurityConfigurerAdapter`:
+    * Метод передающий управление процессом аутентификации пользователей:
+    ```
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+           auth.authenticationProvider(<ссылка на Поставщика Услуг по Аутентификации>)
+        }
+    ```
+    * Т.к. у нас еще нет "Поставщика Услуг по Аутентификации", создадим `@Bean` для него.
+    ```
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(<ссылка на Сервис обрабатывающий сущности типа `UserDetails`>);
+        authProvider.setPasswordEncoder(<ссылка на Сервис дешифровки паролей);
+         
+        return authProvider;
+    }
+    ```
+    * Создадим `@Bean` для "Сервис обрабатывающий сущности типа `UserDetails`":
+    ```
+        @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl();
+    }
+    ```
+    * Создадим "Сервис дешифровки паролей", благо пакет безопасности нашего фреймворка уже имеет достойную реализацию.
+    ```
+        @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    ```
+    * Тепреь наше приложение знает и умеет обрабатывать данные пользователей которые записаны в базу, если таковые попытаются "проникнуть" в нашу систему, мало того мы еще раздали им права, что бы контролировать возможности таковых - "разделяй и властвуй!".
+    * Но наши контроллеры должны обробатывать сервлеты спецевичиским образом, и мы должны описать поведение на уровне наших "точек входа в приложение". Это поведение настраивается переопределением метода в `WebSecurityConfigurerAdapter`.
+    ```
+         @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers(<Точка Входа>).hasAnyAuthority(<Список `ROLES` которые имеют доступ к даной точке входа>)
+            .antMatchers("/edit/**").hasAnyAuthority("AUTHOR", "EDITOR") //пример
+            .anyRequest().authenticated() //все запросы обязаны пройти аутентификацию
+            .and()
+            .formLogin().permitAll() //на страницу логина могут попасть все
+            .and()
+            .logout().permitAll() //на страницу логаута могут попасть все
+            .and()
+            .exceptionHandling().accessDeniedPage("/403"); // механизм ответа если мы узнали пользователя но он не имеет прав на данные действия. 
+    }
+    ```
+    
+    * Сейчас ваше приложение при попытке пройти по любому ендпоинту буде переадресовываться на страницу логина.
+
+### 4.4 Задание ([шпаргалка](https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial))
 * В разработке...
 
