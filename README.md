@@ -288,6 +288,11 @@
     
     * Сейчас ваше приложение при попытке пройти по любому ендпоинту буде переадресовываться на страницу логина.
 
-### 4.4 Задание ([шпаргалка](https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial))
-* В разработке...
-
+### 5 Задание ([шпаргалка](https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial))
+* Установите `Docker` на ваш компьютер. [гайд](https://docs.docker.com/desktop/windows/install/)
+* Напишите `Dockerfile` для ваших сервисов, только для тех в которых есть исполняемый код.
+  * Размещайте файл `Dockerfile` в корневой папке вашего приложения, как показано на картинке ниже
+  
+  ![img_2.png](img_2.png)
+  * У каждого приложение свой докер файл.
+  * 
