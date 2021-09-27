@@ -144,6 +144,8 @@ public class Car {
     public static class Builder{
         private Car car;
 
+        public Builder(){ car=new Car();}
+
         public Builder withNameOwner(String name){
             car.nameOwner=name;
             return this;

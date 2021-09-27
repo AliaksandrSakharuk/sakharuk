@@ -37,12 +37,14 @@ public class BusinessServiceImpl implements ServiceBusiness {
         }
         if (Objects.nonNull(car.getOrder())) {
             serviceOrder.update(car.getOrder().getId(), car.getOrder());
+            if (Objects.nonNull(car.getOrder().getListWorker())){
+                for(Worker worker: car.getOrder().getListWorker()){
+                    serviceWorker.update(worker.getId(),worker);
+                    servicePosition.update(worker.getPosition().getId(), worker.getPosition());
+                }
+            }
         }
-        if (Objects.nonNull(car.getOrder().getListWorker())){
-            car.getOrder().getListWorker().forEach(worker
-                    -> servicePosition.update(worker.getPosition().getId(), worker.getPosition()));
-        }
-        return car;
+        return serviceCar.update(id, car);
     }
 
     @Override
@@ -85,14 +87,14 @@ public class BusinessServiceImpl implements ServiceBusiness {
     }
 
     private  List<Worker> createWorkers(){
-        Worker master=serviceWorker.create(new Worker.Builder()
-                                                    .withSecondName("SAKHARUK")
-                                                    .withFirstName("VADIM")
-                                                    .build());
-        Worker assistent=serviceWorker.create(new Worker.Builder()
-                                                    .withSecondName("KAZAK")
-                                                    .withFirstName("SASHA")
-                                                    .build());
+        Worker master=new Worker.Builder()
+                .withSecondName("SAKHARUK")
+                .withFirstName("VADIM")
+                .build();
+        Worker assistent=new Worker.Builder()
+                .withSecondName("KAZAK")
+                .withFirstName("SASHA")
+                .build();
         master.setPosition(Position.builder()
                 .status(Status.MASTER)
                 .build());
