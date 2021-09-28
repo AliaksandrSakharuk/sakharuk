@@ -10,8 +10,8 @@
     <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
 </form>
 <button type="submit" form="home"  formaction="/web-app" >На главную страницу</button>
-<button type="submit" form="car" formaction="/web-app/update_form" >ИЗМЕНИТЬ</button>
-<button type="submit" form="car" formaction="/web-app/delete_car" >УДАЛИТЬ</button>
+<button type="submit" form="car" formaction="/web-app/car/update_form" >ИЗМЕНИТЬ</button>
+<button type="submit" form="car" formaction="/web-app/car/delete" >УДАЛИТЬ</button>
 
 <h3>Учетная запись автомобиля c ID = <t th:text="${card.id}" /></h3>
 <table border="1" width="65%" cellpadding="5">

@@ -9,21 +9,21 @@
     <button type="submit">Добваить новый автомобиль</button>
 </form>
 <br>
-<form action="/web-app/result" method="get">
+<form action="/web-app/car/result" method="get">
     <label for="id">Найти машину по ID:</label>
     <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Найти"/>
 </form>
 <br>
 <br>
-<form action="/web-app/delete_car" method="get">
+<form action="/web-app/car/delete" method="get">
     <label for="id">Удалить машину по ID:</label>
     <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Удалить"/>
 </form>
 <br>
 <br>
-<form action="/web-app/update_form" method="get">
+<form action="/web-app/car/update_form" method="get">
     <label for="id">Изменить даныне по машине по ID:</label>
     <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Изменить"/>
@@ -49,9 +49,9 @@
 </form>
 <br>
 <p>
-    <button type="submit" form="field" formaction="/web-app/hql" >Find by HQL</button>
-    <button type="submit" form="field" formaction="/web-app/jpql" >Find by JPQL</button>
-    <button type="submit" form="field" formaction="/web-app/criteria" >Find by CRITERIA</button>
+    <button type="submit" form="field" formaction="/web-app/searcher/hql" >Find by HQL</button>
+    <button type="submit" form="field" formaction="/web-app/searcher/jpql" >Find by JPQL</button>
+    <button type="submit" form="field" formaction="/web-app/searcher/criteria" >Find by CRITERIA</button>
 </p>
         </td>
     </tr>

@@ -31,7 +31,7 @@ public class CommonController {
         model.addAttribute("card", new CarDto());
         return "formCar";
     }
-    @PostMapping(value = "/newcar")
+    @PostMapping(value = "/car/save")
     public String resultCreateCar(@ModelAttribute CarDto carDto, Model model) {
         CarDto responce=restTemplate.postForObject(urlBusiness, carDto, CarDto.class);
         model.addAttribute("card", responce);
@@ -45,35 +45,35 @@ public class CommonController {
         model.addAttribute("cards", list);
         return "listcar";
     }
-    @GetMapping(value = "/result")
+    @GetMapping(value = "/car/result")
     public  String findById(@RequestParam(value = "id", required = false) String id, Model model){
         ResponseEntity responseEntity=restTemplate.getForEntity(urlBusiness+id, CarDto.class);
         model.addAttribute("card", responseEntity.getBody());
         return "car";
     }
 
-    @GetMapping(value = "/delete_car")
+    @GetMapping(value = "/car/delete")
     public  String deleteById(@RequestParam(value = "id", required = false) String id, Model model){
         model.addAttribute("id", id);
         restTemplate.delete(urlBusiness+id);
         return "delete_car";
     }
 
-    @GetMapping(value = "/update_form")
+    @GetMapping(value = "/car/update_form")
     public String getFormUpdate(@RequestParam(value = "id", required = false) String id, Model model){
         CarDto carDto= restTemplate.getForObject(urlBusiness+id, CarDto.class);
         model.addAttribute("card",carDto );
         return "form_update";
     }
 
-    @PostMapping(value = "/update_car")
+    @PostMapping(value = "/car/update")
     public String updateCar(@ModelAttribute CarDto carDto, Model model){
         model.addAttribute("card", carDto);
         restTemplate.put(urlBusiness+carDto.getId(), carDto, CarDto.class);
         return "car";
     }
 
-    @GetMapping(value = "/hql")
+    @GetMapping(value = "/searcher/hql")
     public String findByHQL(@RequestParam(value = "date_from", required = false) String dateFrom
                             ,@RequestParam(value = "date_to", required = false) String dateTo
                             ,@RequestParam(value = "name_car", required = false) String nameCar
@@ -86,7 +86,7 @@ public class CommonController {
         return "listcar";
     }
 
-    @GetMapping(value = "/jpql")
+    @GetMapping(value = "/searcher/jpql")
     public String findByJPQL(@RequestParam(value = "date_from", required = false) String dateFrom
             ,@RequestParam(value = "date_to", required = false) String dateTo
             ,@RequestParam(value = "name_car", required = false) String nameCar
@@ -99,7 +99,7 @@ public class CommonController {
         return "listcar";
     }
 
-    @GetMapping(value = "/criteria")
+    @GetMapping(value = "/searcher/criteria")
     public String findByCriteria(@RequestParam(value = "date_from", required = false) String dateFrom
             ,@RequestParam(value = "date_to", required = false) String dateTo
             ,@RequestParam(value = "name_car", required = false) String nameCar
