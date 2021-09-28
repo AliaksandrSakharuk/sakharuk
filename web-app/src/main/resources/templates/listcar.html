@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>LIST's CAR</title>
@@ -16,8 +17,13 @@
         <form id="car" method="get">
             <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
         </form>
-        <button type="submit" form="car" formaction="/web-app/update_form" >ИЗМЕНИТЬ</button>
-        <button type="submit" form="car" formaction="/web-app/delete_car" >УДАЛИТЬ</button>
+        <div sec:authorize="hasAuthority('EDITOR')">
+        <button type="submit" form="car" formaction="/web-app/car/update_form" >ИЗМЕНИТЬ</button>
+        </div>
+        <br>
+        <div sec:authorize="hasAuthority('AUTHOR')">
+        <button type="submit" form="car" formaction="/web-app/car/delete" >УДАЛИТЬ</button>
+        </div>
         <p th:text="'ID: ' + ${card.id}" />
         <p th:text="'Марка машины: ' + ${card.nameCar}" />
         <p th:text="'Владелец: ' + ${card.nameOwner}" />
