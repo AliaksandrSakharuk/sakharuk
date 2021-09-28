@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>CAR WITH IT DEPENDECIES</title>
@@ -10,9 +10,12 @@
     <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
 </form>
 <button type="submit" form="home"  formaction="/web-app" >На главную страницу</button>
+<div sec:authorize="hasAuthority('EDITOR')">
 <button type="submit" form="car" formaction="/web-app/car/update_form" >ИЗМЕНИТЬ</button>
+</div>
+<div sec:authorize="hasAuthority('AUTHOR')">
 <button type="submit" form="car" formaction="/web-app/car/delete" >УДАЛИТЬ</button>
-
+</div>
 <h3>Учетная запись автомобиля c ID = <t th:text="${card.id}" /></h3>
 <table border="1" width="65%" cellpadding="5">
     <tr>

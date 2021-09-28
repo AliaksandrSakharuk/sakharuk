@@ -1,13 +1,20 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Welcome to my SERVICE</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="EXIT" />
+</form>
+<br>
+<div sec:authorize="hasAuthority('AUTHOR')">
 <form method="get" action="/web-app/car">
     <button type="submit">Добваить новый автомобиль</button>
 </form>
+</div>
 <br>
 <form action="/web-app/car/result" method="get">
     <label for="id">Найти машину по ID:</label>
@@ -16,18 +23,22 @@
 </form>
 <br>
 <br>
+<div sec:authorize="hasAuthority('AUTHOR')">
 <form action="/web-app/car/delete" method="get">
     <label for="id">Удалить машину по ID:</label>
     <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Удалить"/>
 </form>
+</div>
 <br>
 <br>
+<div sec:authorize="hasAuthority('EDITOR')">
 <form action="/web-app/car/update_form" method="get">
     <label for="id">Изменить даныне по машине по ID:</label>
     <input name="id" type="text" id="id" pattern="^[0-9]+$" required size="2"/>
     <input type="submit" value="Изменить"/>
 </form>
+</div>
 <br>
 <form method="get" action="/web-app/car/list">
     <button type="submit">Посмотреть весь список автомобилей</button>

@@ -112,6 +112,11 @@ public class CommonController {
         return "listcar";
     }
 
+    @GetMapping("/403")
+    public String error403() {
+        return "403";
+    }
+
     @ModelAttribute("card")
     private CarDto createCarDto(){
         return new CarDto();
