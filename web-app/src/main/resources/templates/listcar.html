@@ -16,8 +16,8 @@
         <form id="car" method="get">
             <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
         </form>
-        <button type="submit" form="car" formaction="/web-app/update_form" >ИЗМЕНИТЬ</button>
-        <button type="submit" form="car" formaction="/web-app/delete_car" >УДАЛИТЬ</button>
+        <button type="submit" form="car" formaction="/web-app/car/update_form" >ИЗМЕНИТЬ</button>
+        <button type="submit" form="car" formaction="/web-app/car/delete" >УДАЛИТЬ</button>
         <p th:text="'ID: ' + ${card.id}" />
         <p th:text="'Марка машины: ' + ${card.nameCar}" />
         <p th:text="'Владелец: ' + ${card.nameOwner}" />

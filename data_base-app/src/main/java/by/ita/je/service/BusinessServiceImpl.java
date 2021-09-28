@@ -39,10 +39,14 @@ public class BusinessServiceImpl implements ServiceBusiness {
             serviceOrder.update(car.getOrder().getId(), car.getOrder());
         }
         if (Objects.nonNull(car.getOrder().getListWorker())){
+            for(worker: car.getOrder().getListWorker()){
+
+            }
+            car.getOrder().getListWorker();
             car.getOrder().getListWorker().forEach(worker
                     -> servicePosition.update(worker.getPosition().getId(), worker.getPosition()));
         }
-        return car;
+        return serviceCar.update(id, car);
     }
 
     @Override

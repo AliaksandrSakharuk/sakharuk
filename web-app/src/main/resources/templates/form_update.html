@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>ДАННЫЕ ЗАПРОСА ПОИСКА ДЛЯ ИЗМЕНЕНИЯ ДАННЫХ:</h1>
-<form th:action="@{/update_car}" th:object="${card}"  method="post">
+<form th:action="@{/car/update}" th:object="${card}"  method="post">
     <p>ID: <input size="2" type="text"  th:field= ${card.id} readonly />
         Марака машины: <input type="text" th:field=${card.nameCar} pattern="^[a-zA-Z]+$" required/>
         Владелец: <input type="text" th:field=${card.nameOwner} pattern="^[a-zA-Z]+$" required/>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/newcar}" th:object="${card}" method="post">
+<form action="#" th:action="@{/car/save}" th:object="${card}" method="post">
     <p>Марака машины: <input type="text" pattern="^[a-zA-Z]+$" required th:field="*{nameCar}" /></p>
     <p>Владелец: <input type="text" pattern="^[a-zA-Z]+$" required  th:field="*{nameOwner}" /></p>
     <p>Пробег: <input type="text"  th:field="*{mileage}"  pattern="(^[0-9]{0,7})+$"/></p>
