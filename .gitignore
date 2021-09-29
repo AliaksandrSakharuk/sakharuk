@@ -33,5 +33,4 @@ build/
 ### Other ###
 lib/*
 .mvn/*
-*.png
 
