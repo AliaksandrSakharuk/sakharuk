@@ -18,8 +18,8 @@ import java.util.List;
 public class CommonController {
 
     private final RestTemplate restTemplate;
-    private String urlBusiness="http://data_base-app:8003/data_base-app/business/";
-    private String urlSearcher= "http://data_base-app:8003/data_base-app/";
+    private String urlBusiness="http://database-app:8003/data_base-app/business/";
+    private String urlSearcher= "http://database-app:8003/data_base-app/";
     private String formTime="T00:00:00.000000+03:00";
 
     @GetMapping(value = "/")
@@ -40,7 +40,7 @@ public class CommonController {
     }
     @GetMapping(value = "/car/list")
     public String getCardList(ModelMap model){
-        String fooResourceUrl= "http://data_base-app:8003/data_base-app/cars";
+        String fooResourceUrl= "http://database-app:8003/data_base-app/cars";
         ResponseEntity<CarDto[]> responseEntity = restTemplate.getForEntity(fooResourceUrl, CarDto[].class);
         List<CarDto> list = Arrays.asList(responseEntity.getBody());
         model.addAttribute("cards", list);

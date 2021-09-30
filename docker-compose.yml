@@ -8,7 +8,7 @@ services:
     ports:
       - "8001:8001"
 
-  data_base-app:
+  database-app:
     container_name: data_base-app
     build: ./data_base-app
     image: data_base-app
