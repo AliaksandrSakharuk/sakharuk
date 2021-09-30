@@ -1,0 +1,5 @@
+FROM openjdk:11-jre-slim-buster
+MAINTAINER sakharuk
+COPY target/web-app-1.0-SNAPSHOT.jar web-app-1.0-SNAPSHOT.jar
+CMD exec java -jar /web-app-1.0-SNAPSHOT.jar
+

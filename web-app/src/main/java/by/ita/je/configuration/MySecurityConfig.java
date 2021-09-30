@@ -50,6 +50,11 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/403");
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
+                .httpBasic()
+                .and()
+                .csrf().disable()
+        ;
     }
 }
