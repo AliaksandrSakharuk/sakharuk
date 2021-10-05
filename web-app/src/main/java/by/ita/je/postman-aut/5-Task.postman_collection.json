@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "8c99a430-fe2f-4824-ae5f-65c9badda1ef",
+		"name": "5-Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE CAR (AUTHOR)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "author",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "author",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nameCar",
+							"value": "OPEL",
+							"type": "text"
+						},
+						{
+							"key": "nameOwner",
+							"value": "My",
+							"type": "text"
+						},
+						{
+							"key": "mileage",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "power",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById (AUTHOR)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "author",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "author",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById (EDITOR)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "editor",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "editor",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById (READER)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "reader",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "reader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE (AUTHOR)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "author",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "author",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nameCar",
+							"value": "dsaf",
+							"type": "text"
+						},
+						{
+							"key": "nameOwner",
+							"value": "adsfdsf",
+							"type": "text"
+						},
+						{
+							"key": "mileage",
+							"value": "23434",
+							"type": "text"
+						},
+						{
+							"key": "power",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "order.id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "order.firstNameClient",
+							"value": "PPPPPPPPP",
+							"type": "text"
+						},
+						{
+							"key": "order.phoneNumber",
+							"value": "1234567",
+							"type": "text"
+						},
+						{
+							"key": "order.volumeBonus",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE (EDITOR)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "editor",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "editor",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nameCar",
+							"value": "dsaf",
+							"type": "text"
+						},
+						{
+							"key": "nameOwner",
+							"value": "adsfdsf",
+							"type": "text"
+						},
+						{
+							"key": "mileage",
+							"value": "23434",
+							"type": "text"
+						},
+						{
+							"key": "power",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "order.id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "order.firstNameClient",
+							"value": "PPPPPPPPP",
+							"type": "text"
+						},
+						{
+							"key": "order.phoneNumber",
+							"value": "1234567",
+							"type": "text"
+						},
+						{
+							"key": "order.volumeBonus",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE_FORM (AUTHOR)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8001/web-app/car/update_form",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"web-app",
+						"car",
+						"update_form"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
