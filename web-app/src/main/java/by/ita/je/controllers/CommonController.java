@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.time.ZonedDateTime;
@@ -18,8 +17,8 @@ import java.util.List;
 public class CommonController {
 
     private final RestTemplate restTemplate;
-    private String urlBusiness="http://localhost:8003/data_base-app/business/";
-    private String urlSearcher= "http://localhost:8003/data_base-app/";
+    private String urlBusiness="http://database-app:8003/data_base-app/business/";
+    private String urlSearcher= "http://database-app:8003/data_base-app/";
     private String formTime="T00:00:00.000000+03:00";
 
     @GetMapping(value = "/")
@@ -40,7 +39,7 @@ public class CommonController {
     }
     @GetMapping(value = "/car/list")
     public String getCardList(Model model){
-        String fooResourceUrl= "http://localhost:8003/data_base-app/cars";
+        String fooResourceUrl= "http://database-app:8003/data_base-app/cars";
         ResponseEntity<CarDto[]> responseEntity = restTemplate.getForEntity(fooResourceUrl, CarDto[].class);
         List<CarDto> list = Arrays.asList(responseEntity.getBody());
         model.addAttribute("cards", list);
