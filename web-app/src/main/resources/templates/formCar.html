@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my SERVICE</title>
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/car/save}" th:object="${card}" method="post">
+    <p>Марака машины: <input type="text" pattern="^[a-zA-Z]+$" required th:field="*{nameCar}" /></p>
+    <p>Владелец: <input type="text" pattern="^[a-zA-Z]+$" required  th:field="*{nameOwner}" /></p>
+    <p>Пробег: <input type="text"  th:field="*{mileage}"  pattern="(^[0-9]{0,7})+$"/></p>
+    <p>Мощность: <input type="text"  th:field="*{power}" pattern="(^[0-9]{0,3})+$" /></p>
+    <p><input type="submit" value="Создать" /> <input type="reset" value="Сбросить" /></p>
+</form>
+<br>
+<form method="get" action="/web-app/">
+    <button type="submit">На главную страницу</button>
+</form>
+</body>
+</html>

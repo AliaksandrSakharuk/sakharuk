@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM UPDATE</title>
+    <style>
+   .layer {
+    margin-left: 64%; /* Отступ слева */
+   }
+  </style>
+</head>
+<body>
+<h1>ДАННЫЕ ЗАПРОСА ПОИСКА ДЛЯ ИЗМЕНЕНИЯ ДАННЫХ:</h1>
+<form th:action="@{/car/update}" th:object="${card}"  method="post">
+    <p>ID: <input size="2" type="text"  th:field= ${card.id} readonly />
+        Марака машины: <input type="text" th:field=${card.nameCar} pattern="^[a-zA-Z]+$" required/>
+        Владелец: <input type="text" th:field=${card.nameOwner} pattern="^[a-zA-Z]+$" required/>
+        Пробег: <input type="text"  th:field=${card.mileage} pattern="(^[0-9]{0,7})+$" required/>
+        Мощность: <input type="text" th:field=${card.power} pattern="(^[0-9]{0,4})+$" required/>
+    </p>
+    <div th:if= "${card.order != null}">
+        <h1>Счет:</h1>
+    <p>ID: <input size="2" type="text" th:field= ${card.order.id} readonly/>
+        Имя киента: <input type="text" th:field=${card.order.firstNameClient} pattern="^[a-zA-Z -]+$" required/>
+        Номер телефона: <input type="text" th:field=${card.order.phoneNumber} pattern="(^[0-9]{0,9})+$" required/>
+        Скидака: <input type="text"  th:field=${card.order.volumeBonus} pattern="(^[0-9]{0,2})+$" required/>
+        Счет: <input type="text" th:field=${card.order.bill} pattern="^[0-9 .]+$" required/>
+    </p>
+        <h1>Список рабов, которые работают с этой машиной:</h1>
+        <div th:if= "${card.order.listWorker != null}">
+            <div th:each="worker, itemStat : ${card.order.listWorker}">
+                <p>ID: <input size="2" type="text" th:field = ${card.order.listWorker[__${itemStat.index}__].id} readonly />
+                    Имя: <input size="10" type="text" th:field =${card.order.listWorker[__${itemStat.index}__].firstName} pattern="^[a-zA-Z]+$" required/>
+                    Фамилия: <input size="10" type="text" th:field=${card.order.listWorker[__${itemStat.index}__].secondName} pattern="^[a-zA-Z]+$" required/>
+                    Номер телефона: <input size="8" type="text"  th:field=${card.order.listWorker[__${itemStat.index}__].phoneNumber} pattern="(^[0-9]{0,9})+$" required/>
+                    Премия: <input size="3" type="text" th:field=${card.order.listWorker[__${itemStat.index}__].bonus} pattern="(^[0-9]{0,2})+$" />
+                    Должность:
+                    <input type="text" th:field = ${card.order.listWorker[__${itemStat.index}__].position.id} hidden="true" />
+                    <input type="radio" th:field=${card.order.listWorker[__${itemStat.index}__].position.status} th:value="MASTER">MASTER
+                    <input type="radio" th:field=${card.order.listWorker[__${itemStat.index}__].position.status} th:value="DIRECTOR">DIRECTOR
+                    <input type="radio" th:field=${card.order.listWorker[__${itemStat.index}__].position.status} th:value="ASSISTANT">ASSISTANT
+                <div class="layer">
+                    <input type="radio" th:field=${card.order.listWorker[__${itemStat.index}__].position.status} th:value="MECHANIСAL">MECHANIСAL
+                    <input type="radio" th:field=${card.order.listWorker[__${itemStat.index}__].position.status} th:value="ACCOUNTANT">ACCOUNTANT
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div th:if="${not #lists.isEmpty(card.details)}">
+        <h1>Список деталей для этого автомобиля:</h1>
+            <div th:each="detail, itemStat : ${card.details}">
+                <p>ID: <input size="2" type="text" th:field = ${card.details[__${itemStat.index}__].id} readonly />
+                    Название детали: <input type="text" th:field =${card.details[__${itemStat.index}__].name}  pattern="^[a-zA-Z]+$" required/>
+                    Парт номер: <input type="text" th:field=${card.details[__${itemStat.index}__].partNumber} pattern="(^[0-9]{0,19})+$" />
+                    Цена закупки: <input type="text"  th:field=${card.details[__${itemStat.index}__].purchasePrice} pattern="^[0-9 .]+$" required/>
+                    Наценка: <input type="text" th:field=${card.details[__${itemStat.index}__].extraCharge} pattern="(^[0-9]{0,2})+$" required/>
+                </p>
+            </div>
+    </div>
+    <p><input type="submit" value="Изменить" />
+</form>
+<form method="get" action="/web-app/">
+    <button type="submit">Вернуться на главную страницу</button>
+</form>
+</body>
+</html>

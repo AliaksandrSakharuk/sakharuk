@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR WITH IT DEPENDECIES</title>
+</head>
+<body>
+<form id="home" method="get" ></form>
+<form id="car" method="get">
+    <input name="id" type="text" th:value= "${card.id}" id="id" hidden="true"/>
+</form>
+<button type="submit" form="home"  formaction="/web-app" >На главную страницу</button>
+<div sec:authorize="hasAuthority('EDITOR')">
+<button type="submit" form="car" formaction="/web-app/car/update_form" >ИЗМЕНИТЬ</button>
+</div>
+<div sec:authorize="hasAuthority('AUTHOR')">
+<button type="submit" form="car" formaction="/web-app/car/delete" >УДАЛИТЬ</button>
+</div>
+<h3>Учетная запись автомобиля c ID = <t th:text="${card.id}" /></h3>
+<table border="1" width="65%" cellpadding="5">
+    <tr>
+
+        <th>Марка машины:</th>
+        <th>Владелец:</th>
+        <th>Пробег</th>
+        <th>Мощность</th>
+    </tr>
+    <tr>
+        <td th:text="${card.nameCar}">Nothing</td>
+        <td th:text="${card.nameOwner}">Nothing</td>
+        <td th:text="${card.mileage}">Nothing</td>
+        <td th:text="${card.power}">Nothing</td>
+    </tr>
+</table>
+<div th:if= "${card.order != null}">
+<h3>СЧЕТ:</h3>
+    <table border="1" width="65%" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Имя клиента</th>
+            <th>Номер телефона</th>
+            <th>Бонус</th>
+            <th>Счет</th>
+        </tr>
+        <tr>
+            <td th:text="${card.order.id}">Nothing</td>
+            <td th:text="${card.order.firstNameClient}">Nothing</td>
+            <td th:text="${card.order.phoneNumber}">Nothing</td>
+            <td th:text="${card.order.volumeBonus}">Nothing</td>
+            <td th:text="${card.order.bill}">Nothing</td>
+        </tr>
+    </table>
+    <h3>Список рабов, которые работают с этой машиной:</h3>
+    <div th:if= "${card.order.listWorker != null}">
+        <table border="1" width="65%" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>имя</th>
+                <th>фамилия</th>
+                <th>номер телефона</th>
+                <th>премия</th>
+                <th>должность</th>
+            </tr>
+            <tr th:each="worker : ${card.order.listWorker}">
+                <td th:text="${worker.id}">Nothing</td>
+                <td th:text="${worker.firstName}">Nothing</td>
+                <td th:text="${worker.secondName}">Nothing</td>
+                <td th:text="${worker.phoneNumber}">Nothing</td>
+                <td th:text="${worker.bonus}">Nothing</td>
+                <td th:text="${worker.position.status}">Nothing</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div th:if="${not #lists.isEmpty(card.details)}">
+<h3>Список деталей для этого автомобиля:</h3>
+    <table border="1" width="65%" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>назавнаие детали</th>
+            <th>номер детали</th>
+            <th>цена закупки, р</th>
+            <th>наценка, %</th>
+        </tr>
+        <tr th:each="detail : ${card.details}">
+            <td th:text="${detail.id}">Nothing</td>
+            <td th:text="${detail.name}"></td>
+            <td th:text="${detail.partNumber}">Nothing</td>
+            <td th:text="${detail.purchasePrice}">Nothing</td>
+            <td th:text="${detail.extraCharge}">Nothing</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
